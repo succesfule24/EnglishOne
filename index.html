@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -79,6 +78,14 @@ table.tbl tr:hover td{background:rgba(255,255,255,.03)}
 .callout{border-left:3px solid #a78bfa;background:rgba(167,139,250,.1);padding:.7rem .9rem;border-radius:.7rem;margin:.8rem 0;font-size:.9rem;color:#ddd6fe}
 .modal-back{position:fixed;inset:0;background:rgba(2,6,23,.75);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);z-index:80;display:none;align-items:center;justify-content:center;padding:1rem}
 .modal-back.open{display:flex}
+.fc{margin-bottom:.45rem}
+.fc:last-child{margin-bottom:0}
+.fw{font-weight:800;color:#fff;font-size:.98rem}
+.ipa{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.76rem;color:#a5b4fc;margin-top:.1rem;word-break:break-word}
+.ipa-na{color:#64748b;font-style:italic;font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem}
+.audio{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);cursor:pointer;font-size:.8rem;line-height:1;transition:.15s;flex:none}
+.audio:hover{background:rgba(52,211,153,.25);border-color:#34d399;transform:scale(1.08)}
+.audio:active{transform:scale(.92)}
 ::-webkit-scrollbar{height:8px;width:8px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:8px}
 details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-marker{display:none}
 .safe-b{padding-bottom:env(safe-area-inset-bottom)}
@@ -97,7 +104,7 @@ details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-
         <div><div class="font-extrabold text-lg leading-tight text-white">English<span class="text-emerald-300">One</span></div><div class="text-[11px] text-slate-400">100% gratis • tanpa server</div></div>
       </div>
       <nav class="flex flex-col gap-1.5" id="side-nav">
-        <button class="nav-btn" data-tab="vault"><i data-lucide="book-marked" class="w-5 h-5"></i>Vocab Vault</button>
+        <button class="nav-btn" data-tab="vault"><i data-lucide="book-marked" class="w-5 h-5"></i>Kamus Multikategori</button>
         <button class="nav-btn" data-tab="speaking"><i data-lucide="mic" class="w-5 h-5"></i>Speaking Tester</button>
         <button class="nav-btn" data-tab="classifier"><i data-lucide="layers" class="w-5 h-5"></i>Sentence Classifier</button>
         <button class="nav-btn" data-tab="lessons"><i data-lucide="graduation-cap" class="w-5 h-5"></i>Materi Grammar</button>
@@ -116,33 +123,45 @@ details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-
 
     <main class="px-4 sm:px-6 lg:px-10 py-6 pb-28 lg:pb-10 max-w-6xl mx-auto">
 
-      <!-- ===== VAULT ===== -->
+      <!-- ===== VAULT (KAMUS MULTIKATEGORI) ===== -->
       <section id="view-vault" data-view class="hidden fade">
-        <div class="mb-5"><h1 class="text-2xl sm:text-3xl font-extrabold text-white">📚 Vocab & Verb Conjugation Vault</h1>
-        <p class="text-slate-400 text-sm mt-1">Ketik satu kata (mis. <b>borrowed</b>, <b>speak</b>, <b>went</b>) — V1, V2, V3, V-ing, arti, dan status Regular/Irregular muncul otomatis.</p></div>
-        <div class="glass p-4 sm:p-5 mb-5">
-          <form id="v-form" class="flex flex-col sm:flex-row gap-3" autocomplete="off">
-            <input id="v-input" class="inp" placeholder="Masukkan 1 kata, contoh: borrowed" maxlength="30" spellcheck="false">
-            <button class="btn btn-em shrink-0" type="submit">🔎 Cari & Konversi</button>
-          </form>
-          <div class="flex flex-wrap gap-2 mt-3 text-xs items-center"><span class="text-slate-500">Coba:</span>
-            <button class="chip chip-btn" data-ex="borrowed">borrowed</button><button class="chip chip-btn" data-ex="speak">speak</button>
-            <button class="chip chip-btn" data-ex="gone">gone</button><button class="chip chip-btn" data-ex="studying">studying</button><button class="chip chip-btn" data-ex="writen">writen (typo)</button>
+        <div class="mb-5"><h1 class="text-2xl sm:text-3xl font-extrabold text-white">📚 Kamus Multikategori Interaktif</h1>
+        <p class="text-slate-400 text-sm mt-1">Verb lengkap (V1 • V2 • V3 • V-ing) dengan cara baca <b>IPA</b> dan audio terpisah untuk setiap bentuk, plus Pronoun (6 jenis), Adverb, Conjunction, Preposition, Interjection, Noun &amp; Adjective. Cari dalam bahasa Inggris <i>atau</i> Indonesia.</p></div>
+
+        <div class="glass p-4 sm:p-5 mb-4">
+          <div class="flex flex-col lg:flex-row gap-3">
+            <div class="relative flex-1">
+              <input id="d-q" class="inp" style="padding-right:3rem" placeholder="🔎 Cari: went, gone, drink…  atau arti: makan, pergi, karena…" autocomplete="off" spellcheck="false" maxlength="40" aria-label="Cari kosakata">
+              <button id="d-qclear" type="button" class="btn btn-gh btn-sm" style="position:absolute;right:.4rem;top:50%;transform:translateY(-50%);display:none" aria-label="Hapus pencarian">✕</button>
+            </div>
+            <select id="d-filter" class="inp lg:w-80" aria-label="Filter kategori"></select>
           </div>
-          <div id="v-result" class="mt-4"></div>
+          <div id="d-chips" class="flex flex-wrap gap-2 mt-3"></div>
+          <div id="d-subchips" class="flex flex-wrap gap-2 mt-2"></div>
+          <div id="d-hint" class="text-xs text-slate-400 mt-3 min-h-[1rem]"></div>
         </div>
+
         <div class="glass p-4 sm:p-5">
-          <div class="flex flex-col lg:flex-row gap-3 lg:items-end mb-4">
-            <div class="flex-1"><label class="lbl" for="v-filter">Cari di Vault</label><input id="v-filter" class="inp" placeholder="Filter kosakata / arti..."></div>
-            <div class="lg:w-48"><label class="lbl" for="v-cat">Status</label><select id="v-cat" class="inp"><option value="">Semua</option><option value="Regular">Regular</option><option value="Irregular">Irregular</option></select></div>
-            <div class="flex gap-2 flex-wrap"><button id="v-add" class="btn btn-vi">＋ Tambah</button><button id="v-seed" class="btn btn-gh">✨ Muat Contoh</button><button id="v-clear" class="btn btn-rd">🗑 Kosongkan</button></div>
+          <div class="flex flex-col xl:flex-row gap-3 xl:items-center justify-between mb-4">
+            <div class="text-sm text-slate-300" id="d-count"></div>
+            <div class="flex flex-wrap gap-2 items-center">
+              <div class="flex gap-1">
+                <button type="button" class="btn btn-sm btn-em" data-dview="table">▦ Tabel</button>
+                <button type="button" class="btn btn-sm btn-gh" data-dview="cards">▤ Kartu</button>
+              </div>
+              <select id="d-sort" class="inp" style="width:auto;padding:.4rem .7rem;font-size:.82rem" aria-label="Urutan"><option value="default">Urutan: Terbaru / Bawaan</option><option value="az">Urutan: A–Z</option></select>
+              <button id="d-add" type="button" class="btn btn-vi">＋ Tambah</button>
+              <button id="d-import" type="button" class="btn btn-em">📥 Upload Kosakata</button>
+              <button id="d-reset" type="button" class="btn btn-gh">↺ Reset Bawaan</button>
+              <button id="d-clear" type="button" class="btn btn-rd">🗑 Kosongkan</button>
+            </div>
           </div>
-          <div class="text-xs text-slate-400 mb-2" id="v-count"></div>
-          <div class="overflow-x-auto rounded-2xl border border-white/10" style="max-height:60vh"><div id="v-table"></div></div>
+          <div id="d-body"></div>
+          <div id="d-more" class="text-center mt-4"></div>
         </div>
       </section>
 
-      <!-- ===== SPEAKING ===== -->
+<!-- ===== SPEAKING ===== -->
       <section id="view-speaking" data-view class="hidden fade">
         <div class="mb-5"><h1 class="text-2xl sm:text-3xl font-extrabold text-white">🎤 Interactive Speaking Tester</h1>
         <p class="text-slate-400 text-sm mt-1">Pilih tense dan/atau verb (atau biarkan acak), ucapkan kalimatnya, dan dapatkan skor akurasi pengucapan.</p></div>
@@ -209,7 +228,7 @@ details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-
 
 <!-- Bottom nav mobile -->
 <nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 grid grid-cols-6 safe-b" id="bottom-nav" style="background:rgba(7,11,26,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.08)">
-  <button class="bnav-btn" data-tab="vault"><i data-lucide="book-marked" class="w-5 h-5"></i>Vault</button>
+  <button class="bnav-btn" data-tab="vault"><i data-lucide="book-marked" class="w-5 h-5"></i>Kamus</button>
   <button class="bnav-btn" data-tab="speaking"><i data-lucide="mic" class="w-5 h-5"></i>Speak</button>
   <button class="bnav-btn" data-tab="classifier"><i data-lucide="layers" class="w-5 h-5"></i>Kalimat</button>
   <button class="bnav-btn" data-tab="lessons"><i data-lucide="graduation-cap" class="w-5 h-5"></i>Materi</button>
@@ -217,21 +236,51 @@ details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-
   <button class="bnav-btn" data-tab="quiz"><i data-lucide="brain" class="w-5 h-5"></i>Quiz</button>
 </nav>
 
-<!-- Modal edit/tambah -->
-<div id="v-modal" class="modal-back" role="dialog" aria-modal="true">
-  <div class="glass p-5 w-full max-w-lg fade" style="background:rgba(15,23,42,.92)">
-    <h3 class="text-lg font-extrabold text-white mb-4" id="vm-title">Tambah Kosakata</h3>
-    <div class="grid grid-cols-2 gap-3">
-      <div class="col-span-2"><label class="lbl" for="vm-word">Kosakata</label><input id="vm-word" class="inp"></div>
-      <div><label class="lbl" for="vm-v1">V1</label><input id="vm-v1" class="inp"></div>
-      <div><label class="lbl" for="vm-v2">V2</label><input id="vm-v2" class="inp"></div>
-      <div><label class="lbl" for="vm-v3">V3</label><input id="vm-v3" class="inp"></div>
-      <div><label class="lbl" for="vm-ving">V-ing</label><input id="vm-ving" class="inp"></div>
-      <div class="col-span-2"><label class="lbl" for="vm-mean">Arti (Bahasa Indonesia)</label><input id="vm-mean" class="inp"></div>
-      <div class="col-span-2"><label class="lbl" for="vm-type">Status</label><select id="vm-type" class="inp"><option>Regular</option><option>Irregular</option></select></div>
+<!-- Modal tambah/edit kosakata -->
+<div id="d-modal" class="modal-back" role="dialog" aria-modal="true" aria-labelledby="dm-title">
+  <div class="glass p-5 w-full max-w-2xl fade" style="background:rgba(15,23,42,.95);max-height:92vh;overflow:auto">
+    <h3 class="text-lg font-extrabold text-white mb-4" id="dm-title">Tambah Kosakata</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div><label class="lbl" for="dm-cat">Kategori</label><select id="dm-cat" class="inp"></select></div>
+      <div id="dm-subwrap"><label class="lbl" for="dm-sub">Sub-kategori</label><select id="dm-sub" class="inp"></select></div>
+      <div><label class="lbl" for="dm-word" id="dm-wordlbl">Kata dasar</label><input id="dm-word" class="inp" maxlength="40" autocomplete="off"></div>
+      <div><label class="lbl" for="dm-p1">Cara baca (IPA) kata dasar</label><input id="dm-p1" class="inp mono" placeholder="mis. drɪŋk" maxlength="80"></div>
+      <div id="dm-verbbox" class="sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div><label class="lbl" for="dm-v2">V2 (gunakan "/" untuk dua varian)</label><input id="dm-v2" class="inp" maxlength="60"></div>
+        <div><label class="lbl" for="dm-p2">IPA V2</label><input id="dm-p2" class="inp mono" maxlength="80"></div>
+        <div><label class="lbl" for="dm-v3">V3</label><input id="dm-v3" class="inp" maxlength="60"></div>
+        <div><label class="lbl" for="dm-p3">IPA V3</label><input id="dm-p3" class="inp mono" maxlength="80"></div>
+        <div><label class="lbl" for="dm-ving">V-ing</label><input id="dm-ving" class="inp" maxlength="60"></div>
+        <div><label class="lbl" for="dm-p4">IPA V-ing</label><input id="dm-p4" class="inp mono" maxlength="80"></div>
+        <div><label class="lbl" for="dm-type">Status verb</label><select id="dm-type" class="inp"><option>Regular</option><option>Irregular</option></select></div>
+        <div class="flex items-end"><button id="dm-auto" type="button" class="btn btn-vi w-full">⚡ Lengkapi bentuk otomatis</button></div>
+      </div>
+      <div class="sm:col-span-2"><label class="lbl" for="dm-mean">Arti (Bahasa Indonesia)</label><input id="dm-mean" class="inp" maxlength="160"></div>
     </div>
-    <div id="vm-err" class="text-sm text-rose-300 mt-3 min-h-[1.2rem]"></div>
-    <div class="flex justify-end gap-2 mt-3"><button id="vm-cancel" class="btn btn-gh">Batal</button><button id="vm-save" class="btn btn-em">Simpan</button></div>
+    <div id="dm-err" class="text-sm text-rose-300 mt-3 min-h-[1.2rem]"></div>
+    <div class="flex justify-end gap-2 mt-3"><button id="dm-cancel" type="button" class="btn btn-gh">Batal</button><button id="dm-save" type="button" class="btn btn-em">💾 Simpan</button></div>
+  </div>
+</div>
+
+<!-- Modal upload / import kosakata -->
+<div id="imp-modal" class="modal-back" role="dialog" aria-modal="true" aria-labelledby="imp-title">
+  <div class="glass p-5 w-full max-w-2xl fade" style="background:rgba(15,23,42,.95);max-height:92vh;overflow:auto">
+    <h3 class="text-lg font-extrabold text-white mb-1" id="imp-title">📥 Upload Kosakata</h3>
+    <p class="text-xs text-slate-400 mb-3">Unggah file <b>JSON</b> atau <b>CSV</b> (maks 2 MB). Sistem memvalidasi tiap baris, melengkapi V2/V3/V-ing yang kosong, dan <b>tidak menimpa</b> entri yang sudah ada. Kolom yang dikenali: <span class="mono">word, category, sub, meaning/arti, ipa, v2, v3, ving, type</span> (hanya <b>word</b> dan <b>meaning</b> yang wajib).</p>
+    <div class="flex flex-wrap gap-2">
+      <label for="imp-file" class="btn btn-em" style="cursor:pointer">📂 Pilih file</label>
+      <input id="imp-file" type="file" accept=".json,.csv,.txt,application/json,text/csv,text/plain" style="display:none">
+      <button id="imp-tpl-csv" type="button" class="btn btn-gh">⬇ Template CSV</button>
+      <button id="imp-tpl-json" type="button" class="btn btn-gh">⬇ Template JSON</button>
+    </div>
+    <label class="lbl mt-4" for="imp-text">…atau tempel isi CSV / JSON di sini</label>
+    <textarea id="imp-text" class="inp mono" rows="5" style="font-size:.8rem" placeholder='word,category,meaning&#10;drink,Verb,minum&#10;quickly,Adverb,dengan cepat'></textarea>
+    <div class="mt-2"><button id="imp-parse" type="button" class="btn btn-vi btn-sm">🔍 Periksa teks</button></div>
+    <div id="imp-preview" class="mt-4"></div>
+    <div class="flex flex-wrap items-center justify-between gap-2 mt-4">
+      <div class="flex gap-2 flex-wrap"><button id="imp-exp-json" type="button" class="btn btn-gh btn-sm">📤 Cadangkan JSON</button><button id="imp-exp-csv" type="button" class="btn btn-gh btn-sm">📤 Cadangkan CSV</button></div>
+      <div class="flex gap-2"><button id="imp-cancel" type="button" class="btn btn-gh">Tutup</button><button id="imp-commit" type="button" class="btn btn-em" disabled>Tidak ada entri valid</button></div>
+    </div>
   </div>
 </div>
 
@@ -256,7 +305,7 @@ const lowFirst = s => s ? s.charAt(0).toLowerCase() + s.slice(1) : s;
 const Store = {
   mem: {},
   get(k, d) { try { const v = localStorage.getItem(k); if (v === null) return k in this.mem ? this.mem[k] : d; return JSON.parse(v); } catch (e) { return k in this.mem ? this.mem[k] : d; } },
-  set(k, v) { this.mem[k] = v; try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* storage penuh / diblokir: tetap di memori */ } }
+  set(k, v) { this.mem[k] = v; try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { this.failed = true; /* storage penuh / diblokir: tetap di memori */ } }
 };
 
 function toast(msg, kind) {
@@ -270,16 +319,23 @@ function toast(msg, kind) {
 
 const TTS = {
   ok: ('speechSynthesis' in window) && ('SpeechSynthesisUtterance' in window),
+  _id: 0, _u: null,
+  // Setiap pemanggilan membacakan HANYA teks yang diberikan; panggilan baru membatalkan yang lama.
   speak(text, rate) {
+    const t = String(text == null ? '' : text).trim();
+    if (!t) return;
     if (!this.ok) { toast('Text-to-Speech tidak didukung browser ini', 'err'); return; }
+    const id = ++this._id;
     try {
-      window.speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(String(text));
+      const synth = window.speechSynthesis;
+      synth.cancel();
+      const u = new SpeechSynthesisUtterance(t);
       u.lang = 'en-US'; u.rate = rate || 0.92;
-      const vs = window.speechSynthesis.getVoices ? window.speechSynthesis.getVoices() : [];
+      const vs = synth.getVoices ? synth.getVoices() : [];
       const v = vs.find(x => /^en[-_]US/i.test(x.lang)) || vs.find(x => /^en/i.test(x.lang));
       if (v) u.voice = v;
-      window.speechSynthesis.speak(u);
+      this._u = u;
+      setTimeout(() => { if (id !== TTS._id) return; try { synth.speak(u); } catch (e) {} }, 40);
     } catch (e) { toast('Gagal memutar audio', 'err'); }
   }
 };
@@ -297,104 +353,128 @@ function lev(a, b) {
 function sim(a, b) { const L = Math.max(a.length, b.length); return L ? 1 - lev(a, b) / L : 1; }
 
 /* ================= Data: Verbs ================= */
-// v1|v2|v3|ving|arti|i=irregular r=regular|objek
-const VERB_RAW = `be|was/were|been|being|menjadi; ada; adalah|i|helpful
-have|had|had|having|mempunyai; makan|i|a good plan
-do|did|done|doing|melakukan; mengerjakan|i|my homework
-go|went|gone|going|pergi|i|to school
-come|came|come|coming|datang|i|home early
-see|saw|seen|seeing|melihat|i|the movie
-eat|ate|eaten|eating|makan|i|rice
-drink|drank|drunk|drinking|minum|i|water
-speak|spoke|spoken|speaking|berbicara|i|English
-write|wrote|written|writing|menulis|i|a letter
-read|read|read|reading|membaca|i|a book
-take|took|taken|taking|mengambil|i|a photo
-give|gave|given|giving|memberi|i|a gift
-make|made|made|making|membuat|i|a cake
-buy|bought|bought|buying|membeli|i|a new phone
-sell|sold|sold|selling|menjual|i|fresh fruit
-teach|taught|taught|teaching|mengajar|i|English
-know|knew|known|knowing|mengetahui; mengenal|i|the answer
-think|thought|thought|thinking|berpikir|i|about it
-say|said|said|saying|mengatakan|i|hello
-tell|told|told|telling|memberitahu; menceritakan|i|a story
-find|found|found|finding|menemukan|i|the key
-get|got|got|getting|mendapatkan|i|a message
-run|ran|run|running|berlari|i|in the park
-swim|swam|swum|swimming|berenang|i|in the lake
-sing|sang|sung|singing|menyanyi|i|a song
-sleep|slept|slept|sleeping|tidur|i|early
-sit|sat|sat|sitting|duduk|i|on the chair
-stand|stood|stood|standing|berdiri|i|near the door
-begin|began|begun|beginning|memulai|i|the lesson
-break|broke|broken|breaking|memecahkan; merusak|i|the glass
-bring|brought|brought|bringing|membawa|i|some food
-build|built|built|building|membangun|i|a house
-catch|caught|caught|catching|menangkap|i|the ball
-choose|chose|chosen|choosing|memilih|i|a book
-draw|drew|drawn|drawing|menggambar|i|a picture
-drive|drove|driven|driving|mengemudi|i|a car
-fall|fell|fallen|falling|jatuh|i|from the tree
-feel|felt|felt|feeling|merasa|i|tired
-fly|flew|flown|flying|terbang; menerbangkan|i|a kite
-forget|forgot|forgotten|forgetting|lupa|i|my password
-meet|met|met|meeting|bertemu|i|my friends
-pay|paid|paid|paying|membayar|i|the bill
-put|put|put|putting|meletakkan|i|the book on the table
-ride|rode|ridden|riding|mengendarai; naik|i|a bike
-send|sent|sent|sending|mengirim|i|an email
-spend|spent|spent|spending|menghabiskan|i|money wisely
-understand|understood|understood|understanding|mengerti; memahami|i|the lesson
-wear|wore|worn|wearing|memakai|i|a blue jacket
-win|won|won|winning|menang; memenangkan|i|the game
-lose|lost|lost|losing|kehilangan; kalah|i|the key
-keep|kept|kept|keeping|menyimpan; menjaga|i|the secret
-leave|left|left|leaving|meninggalkan|i|the office
-lend|lent|lent|lending|meminjamkan|i|him some money
-hear|heard|heard|hearing|mendengar|i|the news
-hold|held|held|holding|memegang|i|the baby
-hide|hid|hidden|hiding|menyembunyikan|i|the gift
-grow|grew|grown|growing|tumbuh; menanam|i|vegetables
-wake|woke|woken|waking|bangun; membangunkan|i|up early
-cut|cut|cut|cutting|memotong|i|the paper
-play|played|played|playing|bermain|r|football
-work|worked|worked|working|bekerja|r|hard
-study|studied|studied|studying|belajar|r|English
-watch|watched|watched|watching|menonton|r|a movie
-cook|cooked|cooked|cooking|memasak|r|dinner
-clean|cleaned|cleaned|cleaning|membersihkan|r|the room
-walk|walked|walked|walking|berjalan|r|to the market
-talk|talked|talked|talking|berbicara; mengobrol|r|to her
-listen|listened|listened|listening|mendengarkan|r|to music
-open|opened|opened|opening|membuka|r|the window
-close|closed|closed|closing|menutup|r|the door
-borrow|borrowed|borrowed|borrowing|meminjam|r|a book
-help|helped|helped|helping|membantu|r|my friend
-learn|learned|learned|learning|belajar; mempelajari|r|new words
-love|loved|loved|loving|mencintai; menyukai|r|my family
-live|lived|lived|living|tinggal; hidup|r|in Jakarta
-want|wanted|wanted|wanting|menginginkan|r|a new bike
-need|needed|needed|needing|membutuhkan|r|some help
-use|used|used|using|menggunakan|r|a laptop
-call|called|called|calling|menelepon; memanggil|r|my mother
-ask|asked|asked|asking|bertanya; meminta|r|a question
-wash|washed|washed|washing|mencuci|r|the dishes
-visit|visited|visited|visiting|mengunjungi|r|my grandmother
-travel|traveled|traveled|traveling|bepergian|r|to Bali
-dance|danced|danced|dancing|menari|r|on the stage
-smile|smiled|smiled|smiling|tersenyum|r|at everyone
-start|started|started|starting|memulai|r|the meeting
-finish|finished|finished|finishing|menyelesaikan|r|the project
-arrive|arrived|arrived|arriving|tiba|r|at the station
-stop|stopped|stopped|stopping|berhenti; menghentikan|r|the car
-wait|waited|waited|waiting|menunggu|r|for the bus
-carry|carried|carried|carrying|membawa; mengangkut|r|a heavy bag
-try|tried|tried|trying|mencoba|r|a new recipe`;
+// v1|v2|v3|ving|arti|i=irregular r=regular|objek|IPA (irregular: v1;v2;v3 — regular: v1 saja)
+const VERB_RAW = `be|was/were|been|being|menjadi; ada; adalah|i|helpful|biː;wʌz / wɜr;bɪn
+have|had|had|having|mempunyai; memiliki|i|a good plan|hæv;hæd;hæd
+do|did|done|doing|melakukan; mengerjakan|i|my homework|duː;dɪd;dʌn
+go|went|gone|going|pergi|i|to school|goʊ;wɛnt;gɔn
+come|came|come|coming|datang|i|home early|kʌm;keɪm;kʌm
+see|saw|seen|seeing|melihat|i|the movie|siː;sɔ;siːn
+eat|ate|eaten|eating|makan|i|rice|iːt;eɪt;ˈiːtən
+drink|drank|drunk|drinking|minum|i|water|drɪŋk;dræŋk;drʌŋk
+speak|spoke|spoken|speaking|berbicara|i|English|spiːk;spoʊk;ˈspoʊkən
+write|wrote|written|writing|menulis|i|a letter|raɪt;roʊt;ˈrɪtən
+read|read|read|reading|membaca|i|a book|riːd;rɛd;rɛd
+take|took|taken|taking|mengambil|i|a photo|teɪk;tʊk;ˈteɪkən
+give|gave|given|giving|memberi|i|a gift|gɪv;geɪv;ˈgɪvən
+make|made|made|making|membuat|i|a cake|meɪk;meɪd;meɪd
+buy|bought|bought|buying|membeli|i|a new phone|baɪ;bɔt;bɔt
+sell|sold|sold|selling|menjual|i|fresh fruit|sɛl;soʊld;soʊld
+teach|taught|taught|teaching|mengajar|i|English|tiːtʃ;tɔt;tɔt
+know|knew|known|knowing|mengetahui; mengenal|i|the answer|noʊ;nuː;noʊn
+think|thought|thought|thinking|berpikir|i|about it|θɪŋk;θɔt;θɔt
+say|said|said|saying|mengatakan|i|hello|seɪ;sɛd;sɛd
+tell|told|told|telling|memberitahu; menceritakan|i|a story|tɛl;toʊld;toʊld
+find|found|found|finding|menemukan|i|the key|faɪnd;faʊnd;faʊnd
+get|got|got|getting|mendapatkan|i|a message|gɛt;gɑt;gɑt
+run|ran|run|running|berlari|i|in the park|rʌn;ræn;rʌn
+swim|swam|swum|swimming|berenang|i|in the lake|swɪm;swæm;swʌm
+sing|sang|sung|singing|menyanyi|i|a song|sɪŋ;sæŋ;sʌŋ
+sleep|slept|slept|sleeping|tidur|i|early|sliːp;slɛpt;slɛpt
+sit|sat|sat|sitting|duduk|i|on the chair|sɪt;sæt;sæt
+stand|stood|stood|standing|berdiri|i|near the door|stænd;stʊd;stʊd
+begin|began|begun|beginning|memulai|i|the lesson|bɪˈgɪn;bɪˈgæn;bɪˈgʌn
+break|broke|broken|breaking|memecahkan; merusak|i|the glass|breɪk;broʊk;ˈbroʊkən
+bring|brought|brought|bringing|membawa|i|some food|brɪŋ;brɔt;brɔt
+build|built|built|building|membangun|i|a house|bɪld;bɪlt;bɪlt
+catch|caught|caught|catching|menangkap|i|the ball|kætʃ;kɔt;kɔt
+choose|chose|chosen|choosing|memilih|i|a book|tʃuːz;tʃoʊz;ˈtʃoʊzən
+draw|drew|drawn|drawing|menggambar|i|a picture|drɔ;druː;drɔn
+drive|drove|driven|driving|mengemudi|i|a car|draɪv;droʊv;ˈdrɪvən
+fall|fell|fallen|falling|jatuh|i|from the tree|fɔl;fɛl;ˈfɔlən
+feel|felt|felt|feeling|merasa|i|tired|fiːl;fɛlt;fɛlt
+fly|flew|flown|flying|terbang; menerbangkan|i|a kite|flaɪ;fluː;floʊn
+forget|forgot|forgotten|forgetting|lupa|i|my password|fərˈgɛt;fərˈgɑt;fərˈgɑtən
+meet|met|met|meeting|bertemu|i|my friends|miːt;mɛt;mɛt
+pay|paid|paid|paying|membayar|i|the bill|peɪ;peɪd;peɪd
+put|put|put|putting|meletakkan|i|the book on the table|pʊt;pʊt;pʊt
+ride|rode|ridden|riding|mengendarai; naik|i|a bike|raɪd;roʊd;ˈrɪdən
+send|sent|sent|sending|mengirim|i|an email|sɛnd;sɛnt;sɛnt
+spend|spent|spent|spending|menghabiskan|i|money wisely|spɛnd;spɛnt;spɛnt
+understand|understood|understood|understanding|mengerti; memahami|i|the lesson|ˌʌndərˈstænd;ˌʌndərˈstʊd;ˌʌndərˈstʊd
+wear|wore|worn|wearing|memakai|i|a blue jacket|wɛr;wɔr;wɔrn
+win|won|won|winning|menang; memenangkan|i|the game|wɪn;wʌn;wʌn
+lose|lost|lost|losing|kehilangan; kalah|i|the key|luːz;lɔst;lɔst
+keep|kept|kept|keeping|menyimpan; menjaga|i|the secret|kiːp;kɛpt;kɛpt
+leave|left|left|leaving|meninggalkan|i|the office|liːv;lɛft;lɛft
+lend|lent|lent|lending|meminjamkan|i|him some money|lɛnd;lɛnt;lɛnt
+hear|heard|heard|hearing|mendengar|i|the news|hɪr;hɜrd;hɜrd
+hold|held|held|holding|memegang|i|the baby|hoʊld;hɛld;hɛld
+hide|hid|hidden|hiding|menyembunyikan|i|the gift|haɪd;hɪd;ˈhɪdən
+grow|grew|grown|growing|tumbuh; menanam|i|vegetables|groʊ;gruː;groʊn
+wake|woke|woken|waking|bangun; membangunkan|i|up early|weɪk;woʊk;ˈwoʊkən
+cut|cut|cut|cutting|memotong|i|the paper|kʌt;kʌt;kʌt
+play|played|played|playing|bermain|r|football|pleɪ
+work|worked|worked|working|bekerja|r|hard|wɜrk
+study|studied|studied|studying|belajar|r|English|ˈstʌdi
+watch|watched|watched|watching|menonton|r|a movie|wɑtʃ
+cook|cooked|cooked|cooking|memasak|r|dinner|kʊk
+clean|cleaned|cleaned|cleaning|membersihkan|r|the room|kliːn
+walk|walked|walked|walking|berjalan|r|to the market|wɔk
+talk|talked|talked|talking|berbicara; mengobrol|r|to her|tɔk
+listen|listened|listened|listening|mendengarkan|r|to music|ˈlɪsən
+open|opened|opened|opening|membuka|r|the window|ˈoʊpən
+close|closed|closed|closing|menutup|r|the door|kloʊz
+borrow|borrowed|borrowed|borrowing|meminjam|r|a book|ˈbɑroʊ
+help|helped|helped|helping|membantu|r|my friend|hɛlp
+learn|learned|learned|learning|belajar; mempelajari|r|new words|lɜrn
+love|loved|loved|loving|mencintai; menyukai|r|my family|lʌv
+live|lived|lived|living|tinggal; hidup|r|in Jakarta|lɪv
+want|wanted|wanted|wanting|menginginkan|r|a new bike|wɑnt
+need|needed|needed|needing|membutuhkan|r|some help|niːd
+use|used|used|using|menggunakan|r|a laptop|juːz
+call|called|called|calling|menelepon; memanggil|r|my mother|kɔl
+ask|asked|asked|asking|bertanya; meminta|r|a question|æsk
+wash|washed|washed|washing|mencuci|r|the dishes|wɑʃ
+visit|visited|visited|visiting|mengunjungi|r|my grandmother|ˈvɪzɪt
+travel|traveled|traveled|traveling|bepergian|r|to Bali|ˈtrævəl
+dance|danced|danced|dancing|menari|r|on the stage|dæns
+smile|smiled|smiled|smiling|tersenyum|r|at everyone|smaɪl
+start|started|started|starting|memulai|r|the meeting|stɑrt
+finish|finished|finished|finishing|menyelesaikan|r|the project|ˈfɪnɪʃ
+arrive|arrived|arrived|arriving|tiba|r|at the station|əˈraɪv
+stop|stopped|stopped|stopping|berhenti; menghentikan|r|the car|stɑp
+wait|waited|waited|waiting|menunggu|r|for the bus|weɪt
+carry|carried|carried|carrying|membawa; mengangkut|r|a heavy bag|ˈkæri
+try|tried|tried|trying|mencoba|r|a new recipe|traɪ`;
+
+// IPA helper: bentuk lampau regular dari IPA V1 (/t/, /d/, atau /ɪd/)
+function pastIPA(p) {
+  p = String(p || '');
+  if (!p) return '';
+  if (/[td]$/.test(p)) return p + 'ɪd';
+  if (/i$/.test(p)) return p + 'd';
+  if (/(p|k|f|s|ʃ|θ)$/.test(p)) return p + 't';
+  return p + 'd';
+}
+// IPA helper: bentuk -ing (tambahkan tekanan jika V1 hanya satu suku kata)
+function ingIPA(p) {
+  p = String(p || '');
+  if (!p) return '';
+  const nuclei = (p.match(/[aeiouæɑɒɔəɛɪʊʌɜɚɝ]+ː?/g) || []).length;
+  return (nuclei <= 1 && p.indexOf('ˈ') === -1 ? 'ˈ' : '') + p + 'ɪŋ';
+}
 
 const VERBS = VERB_RAW.trim().split('\n').map(l => {
   const p = l.split('|');
-  return { v1: p[0], v2: p[1], v3: p[2], ving: p[3], meaning: p[4], type: p[5] === 'i' ? 'Irregular' : 'Regular', obj: p[6] || '' };
+  const irregular = p[5] === 'i';
+  const ipas = (p[7] || '').split(';').map(s => s.trim());
+  const p1 = ipas[0] || '';
+  const past = irregular ? '' : pastIPA(p1);
+  return {
+    v1: p[0], v2: p[1], v3: p[2], ving: p[3], meaning: p[4], type: irregular ? 'Irregular' : 'Regular', obj: p[6] || '',
+    p1: p1, p2: irregular ? (ipas[1] || '') : past, p3: irregular ? (ipas[2] || '') : past, p4: ingIPA(p1)
+  };
 });
 function third(v) {
   if (v === 'have') return 'has'; if (v === 'be') return 'is';
@@ -410,14 +490,6 @@ function regConj(w) {
   else { ed = w + 'ed'; ing = w + 'ing'; }
   return { v1: w, v2: ed, v3: ed, ving: ing };
 }
-const FORM_INDEX = [];
-VERBS.forEach(v => {
-  FORM_INDEX.push({ form: v.v1, verb: v, role: 'V1' });
-  FORM_INDEX.push({ form: third(v.v1), verb: v, role: 'V1 (he/she/it)' });
-  v.v2.split('/').forEach(f => FORM_INDEX.push({ form: f, verb: v, role: 'V2' }));
-  FORM_INDEX.push({ form: v.v3, verb: v, role: 'V3' });
-  FORM_INDEX.push({ form: v.ving, verb: v, role: 'V-ing' });
-});
 
 /* ================= Data: 16 Tenses ================= */
 const TENSES = [
@@ -672,71 +744,684 @@ function makeSpeakBlock(box, getText) {
   box.addEventListener('click', box._h);
 }
 
-/* ================= VAULT ================= */
-const Vault = {
-  items: (function () { const v = Store.get('en1_vault', []); return Array.isArray(v) ? v : []; })(),
-  hits: [], editId: null, lastWord: '', draft: null,
-  save() { Store.set('en1_vault', this.items); },
-  has(word) { return this.items.some(i => i.word === word); },
-  lookup(w) {
-    const hits = [];
-    FORM_INDEX.forEach(f => {
-      if (f.form === w) {
-        let h = hits.find(x => x.verb === f.verb);
-        if (!h) { h = { verb: f.verb, roles: [] }; hits.push(h); }
-        if (h.roles.indexOf(f.role) === -1) h.roles.push(f.role);
-      }
-    });
-    return hits;
-  },
-  suggest(w) {
-    const maxD = w.length <= 4 ? 1 : 2; const best = new Map();
-    FORM_INDEX.forEach(f => {
-      const d = lev(w, f.form);
-      if (d > 0 && d <= maxD) { const cur = best.get(f.verb); if (!cur || d < cur.d) best.set(f.verb, { d, form: f.form }); }
-    });
-    return Array.from(best.values()).sort((a, b) => a.d - b.d).slice(0, 4).map(x => x.form);
-  },
-  entryFrom(hit, word) {
-    const v = hit.verb; return { word, v1: v.v1, v2: v.v2.replace('/', ' / '), v3: v.v3, ving: v.ving, meaning: v.meaning, type: v.type };
-  },
-  formBox(label, word) {
-    return '<div class="rounded-2xl p-3 text-center" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)"><div class="lbl" style="margin:0">' + label + '</div><div class="text-lg font-extrabold text-white mt-1">' + esc(word) + '</div><button class="btn btn-gh btn-sm mt-2" data-say="' + esc(word.split('/')[0].trim()) + '">🔊</button></div>';
-  },
-  card(e, roleText, idx, kind) {
-    const saved = this.has(e.word);
-    return '<div class="glass p-4 fade" style="border-radius:1rem;background:rgba(255,255,255,.06)">' +
-      '<div class="flex flex-wrap items-center gap-2 mb-3"><span class="text-xl font-extrabold text-white">' + esc(e.word) + '</span>' +
-      (roleText ? '<span class="chip chip-vi">' + esc(roleText) + '</span>' : '') +
-      '<span class="chip ' + (e.type === 'Irregular' ? 'chip-am' : 'chip-em') + '">' + esc(e.type) + ' Verb</span>' +
-      (kind === 'draft' ? '<span class="chip chip-rd">draf otomatis — periksa</span>' : '') + '</div>' +
-      '<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">' + this.formBox('V1', e.v1) + this.formBox('V2', e.v2) + this.formBox('V3', e.v3) + this.formBox('V-ing', e.ving) + '</div>' +
-      '<div class="mt-3 text-sm"><span class="text-slate-400">Arti:</span> <b class="text-white">' + esc(e.meaning) + '</b></div>' +
-      '<div class="mt-3"><button class="btn ' + (saved ? 'btn-gh' : 'btn-em') + '" data-save="' + idx + '" data-kind="' + (kind || 'hit') + '" ' + (saved ? 'disabled' : '') + '>' + (saved ? '✓ Tersimpan di Vault' : '💾 Simpan ke Vault') + '</button></div></div>';
-  },
-  doSearch(raw) {
-    const w = String(raw || '').toLowerCase().trim().replace(/[^a-z'-]/g, '');
-    const out = $('#v-result');
-    if (!out) return;
-    if (!w) { out.innerHTML = '<div class="text-sm text-amber-300">Masukkan satu kata terlebih dahulu.</div>'; return; }
-    this.lastWord = w; this.draft = null;
-    const hits = this.lookup(w);
-    this.hits = hits.map(h => ({ e: this.entryFrom(h, w), role: h.roles.join(' / ') + ' dari "' + h.verb.v1 + '"' }));
-    if (hits.length) {
-      out.innerHTML = this.hits.map((h, i) => this.card(h.e, h.role, i, 'hit')).join('');
-      return;
+/* ================= DICTIONARY (Kamus Multikategori) ================= */
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+const PAGE = 60;
+const CAT_LIST = [['Verb', 'Verbs'], ['Pronoun', 'Pronouns'], ['Adverb', 'Adverbs'], ['Conjunction', 'Conjunctions'], ['Preposition', 'Prepositions'], ['Interjection', 'Interjections'], ['Noun', 'Nouns'], ['Adjective', 'Adjectives']];
+const CAT_PLURAL = {}; CAT_LIST.forEach(c => { CAT_PLURAL[c[0]] = c[1]; });
+const CAT_SUBS = {
+  Pronoun: ['Subject Pronoun', 'Object Pronoun', 'Possessive Adjective', 'Possessive Pronoun', 'Reflexive Pronoun', 'Demonstrative/Indefinite'],
+  Adverb: ['Time', 'Place', 'Manner', 'Frequency'],
+  Conjunction: ['Coordinating (FANBOYS)', 'Subordinating'],
+  Preposition: ['Time & Place', 'Place', 'Direction', 'Other']
+};
+const CAT_STYLE = { Verb: 'chip-vi', Pronoun: 'chip-em', Adverb: 'chip-am', Conjunction: 'chip-rd', Preposition: 'chip-vi', Interjection: 'chip-am', Noun: 'chip-em', Adjective: 'chip-rd' };
+const WORD_RE = /^[A-Za-z][A-Za-z' \-]{0,39}$/;
+const FORM_RE = /^[A-Za-z][A-Za-z' \-\/]{0,59}$/;
+
+// @Kategori|Sub  lalu baris:  kata|IPA|arti
+const NONVERB_RAW = `@Pronoun|Subject Pronoun
+I|aɪ|saya; aku
+You|juː|kamu; kalian; Anda
+He|hiː|dia (laki-laki)
+She|ʃiː|dia (perempuan)
+It|ɪt|dia; itu (benda/hewan)
+We|wiː|kami; kita
+They|ðeɪ|mereka
+@Pronoun|Object Pronoun
+me|miː|saya; aku (objek)
+you|juː|kamu; kalian (objek)
+him|hɪm|dia (laki-laki, objek)
+her|hɜr|dia (perempuan, objek)
+it|ɪt|dia; itu (objek)
+us|ʌs|kami; kita (objek)
+them|ðɛm|mereka (objek)
+@Pronoun|Possessive Adjective
+my|maɪ|milik saya; ...ku
+your|jɔr|milik kamu; ...mu
+his|hɪz|milik dia (laki-laki); ...nya
+her|hɜr|milik dia (perempuan); ...nya
+its|ɪts|milik benda/hewan itu; ...nya
+our|ˈaʊər|milik kami/kita
+their|ðɛr|milik mereka
+@Pronoun|Possessive Pronoun
+mine|maɪn|punya saya
+yours|jɔrz|punya kamu
+his|hɪz|punya dia (laki-laki)
+hers|hɜrz|punya dia (perempuan)
+ours|ˈaʊərz|punya kami/kita
+theirs|ðɛrz|punya mereka
+@Pronoun|Reflexive Pronoun
+myself|maɪˈsɛlf|diri saya sendiri
+yourself|jɔrˈsɛlf|dirimu sendiri
+himself|hɪmˈsɛlf|dirinya sendiri (laki-laki)
+herself|hɜrˈsɛlf|dirinya sendiri (perempuan)
+itself|ɪtˈsɛlf|dirinya sendiri (benda/hewan)
+ourselves|aʊərˈsɛlvz|diri kami/kita sendiri
+themselves|ðɛmˈsɛlvz|diri mereka sendiri
+@Pronoun|Demonstrative/Indefinite
+this|ðɪs|ini
+that|ðæt|itu
+these|ðiːz|ini (jamak)
+those|ðoʊz|itu (jamak)
+someone|ˈsʌmwʌn|seseorang
+anything|ˈɛniθɪŋ|apa pun
+everyone|ˈɛvriwʌn|semua orang
+nothing|ˈnʌθɪŋ|tidak ada apa-apa
+@Adverb|Time
+now|naʊ|sekarang
+today|təˈdeɪ|hari ini
+tomorrow|təˈmɑroʊ|besok
+yesterday|ˈjɛstərdeɪ|kemarin
+soon|suːn|segera; sebentar lagi
+already|ɔlˈrɛdi|sudah
+later|ˈleɪtər|nanti; kemudian
+@Adverb|Place
+here|hɪr|di sini
+there|ðɛr|di sana
+everywhere|ˈɛvriwɛr|di mana-mana
+outside|ˌaʊtˈsaɪd|di luar
+inside|ˌɪnˈsaɪd|di dalam
+nearby|ˌnɪrˈbaɪ|di dekat sini
+@Adverb|Manner
+quickly|ˈkwɪkli|dengan cepat
+slowly|ˈsloʊli|dengan perlahan
+carefully|ˈkɛrfəli|dengan hati-hati
+well|wɛl|dengan baik
+beautifully|ˈbjuːtɪfli|dengan indah
+@Adverb|Frequency
+always|ˈɔlweɪz|selalu
+usually|ˈjuːʒuəli|biasanya
+often|ˈɔfən|sering
+sometimes|ˈsʌmtaɪmz|kadang-kadang
+rarely|ˈrɛrli|jarang
+never|ˈnɛvər|tidak pernah
+@Conjunction|Coordinating (FANBOYS)
+for|fɔr|karena; sebab
+and|ænd|dan
+nor|nɔr|dan juga tidak
+but|bʌt|tetapi
+or|ɔr|atau
+yet|jɛt|namun; tetapi
+so|soʊ|jadi; maka
+@Conjunction|Subordinating
+because|bɪˈkɔz|karena
+although|ɔlˈðoʊ|meskipun
+if|ɪf|jika; kalau
+when|wɛn|ketika
+while|waɪl|sementara; sambil
+unless|ənˈlɛs|kecuali jika
+since|sɪns|sejak; karena
+after|ˈæftər|setelah
+before|bɪˈfɔr|sebelum
+until|ənˈtɪl|sampai; hingga
+@Preposition|Time & Place
+in|ɪn|di dalam; pada (bulan/tahun)
+on|ɑn|di atas; pada (hari/tanggal)
+at|æt|di; pada (jam/titik)
+@Preposition|Place
+under|ˈʌndər|di bawah
+between|bɪˈtwiːn|di antara (dua hal)
+among|əˈmʌŋ|di antara (banyak hal)
+above|əˈbʌv|di atas
+below|bɪˈloʊ|di bawah
+behind|bɪˈhaɪnd|di belakang
+near|nɪr|dekat
+beside|bɪˈsaɪd|di samping
+@Preposition|Direction
+to|tuː|ke; kepada
+from|frʌm|dari
+into|ˈɪntuː|ke dalam
+through|θruː|melalui; menembus
+across|əˈkrɔs|menyeberangi; melintasi
+toward|təˈwɔrd|menuju; ke arah
+@Preposition|Other
+for|fɔr|untuk; selama
+with|wɪð|dengan; bersama
+without|wɪˈðaʊt|tanpa
+about|əˈbaʊt|tentang; sekitar
+by|baɪ|oleh; dekat; dengan (cara)
+during|ˈdʊrɪŋ|selama; sewaktu
+@Interjection|
+wow|waʊ|wah!
+oh|oʊ|oh!; oh begitu
+oops|uːps|aduh!; ups!
+hey|heɪ|hei!
+ouch|aʊtʃ|aduh! (kesakitan)
+hooray|hʊˈreɪ|hore!
+hello|həˈloʊ|halo
+yay|jeɪ|asyik!; yeay!
+alas|əˈlæs|sayang sekali!
+ugh|ʌg|ih!; uh!
+@Noun|
+book|bʊk|buku
+teacher|ˈtiːtʃər|guru
+student|ˈstuːdənt|siswa; mahasiswa
+house|haʊs|rumah
+water|ˈwɔtər|air
+family|ˈfæməli|keluarga
+friend|frɛnd|teman
+city|ˈsɪti|kota
+school|skuːl|sekolah
+food|fuːd|makanan
+time|taɪm|waktu
+day|deɪ|hari
+money|ˈmʌni|uang
+phone|foʊn|telepon
+car|kɑr|mobil
+market|ˈmɑrkɪt|pasar
+question|ˈkwɛstʃən|pertanyaan
+answer|ˈænsər|jawaban
+morning|ˈmɔrnɪŋ|pagi
+@Adjective|
+big|bɪg|besar
+small|smɔl|kecil
+beautiful|ˈbjuːtɪfəl|indah; cantik
+happy|ˈhæpi|bahagia; senang
+sad|sæd|sedih
+fast|fæst|cepat
+slow|sloʊ|lambat
+good|gʊd|baik; bagus
+bad|bæd|buruk; jelek
+new|nuː|baru
+old|oʊld|tua; lama
+easy|ˈiːzi|mudah
+difficult|ˈdɪfɪkəlt|sulit
+important|ɪmˈpɔrtnt|penting
+helpful|ˈhɛlpfəl|membantu; berguna
+tired|ˈtaɪərd|lelah
+hungry|ˈhʌŋgri|lapar
+honest|ˈɑnɪst|jujur`;
+
+/* ----- helper normalisasi ----- */
+function cleanStr(s, max) { return String(s == null ? '' : s).replace(/[\u0000-\u001f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, max || 200); }
+function normForm(s) { return String(s || '').split('/').map(x => cleanStr(x, 40).toLowerCase()).filter(Boolean).join(' / '); }
+function normIPA(s) { s = cleanStr(s, 80); s = s.replace(/^[\[\/]+/, '').replace(/[\]\/]+$/, '').trim(); return s; }
+function canonCat(x) {
+  const s = String(x || '').toLowerCase().trim();
+  if (!s) return '';
+  if (/^(verb|verbs|v|kata kerja|kerja)$/.test(s)) return 'Verb';
+  if (/^(pronoun|pronouns|pron|kata ganti|ganti)$/.test(s)) return 'Pronoun';
+  if (/^(adverb|adverbs|adv|kata keterangan|keterangan)$/.test(s)) return 'Adverb';
+  if (/^(conjunction|conjunctions|conj|kata hubung|konjungsi|hubung)$/.test(s)) return 'Conjunction';
+  if (/^(preposition|prepositions|prep|kata depan|preposisi|depan)$/.test(s)) return 'Preposition';
+  if (/^(interjection|interjections|interj|kata seru|interjeksi|seru)$/.test(s)) return 'Interjection';
+  if (/^(noun|nouns|n|kata benda|benda)$/.test(s)) return 'Noun';
+  if (/^(adjective|adjectives|adj|kata sifat|sifat)$/.test(s)) return 'Adjective';
+  return '';
+}
+function canonSub(cat, x) {
+  const subs = CAT_SUBS[cat]; const s = String(x || '').toLowerCase().trim();
+  if (!subs || !s) return '';
+  for (let i = 0; i < subs.length; i++) if (subs[i].toLowerCase() === s) return subs[i];
+  if (cat === 'Pronoun') {
+    if (/subj/.test(s)) return subs[0];
+    if (/obj/.test(s)) return subs[1];
+    if (/poss/.test(s)) return /adj|determ/.test(s) ? subs[2] : subs[3];
+    if (/refl/.test(s)) return subs[4];
+    if (/demo|indef/.test(s)) return subs[5];
+    return '';
+  }
+  if (s.length >= 3) for (let j = 0; j < subs.length; j++) if (subs[j].toLowerCase().indexOf(s) === 0) return subs[j];
+  return '';
+}
+function normEntry(e) {
+  if (!e || typeof e !== 'object') return null;
+  let cat = canonCat(e.cat);
+  if (!cat) cat = (e.v2 || e.v3 || e.ving) ? 'Verb' : 'Noun';
+  const o = { id: e.id ? String(e.id) : uid(), cat: cat, sub: cleanStr(e.sub, 40), meaning: cleanStr(e.meaning, 160), p1: normIPA(e.p1), p2: normIPA(e.p2), p3: normIPA(e.p3), p4: normIPA(e.p4) };
+  if (cat === 'Verb') {
+    o.v1 = cleanStr(e.v1 || e.word, 40).toLowerCase(); o.word = o.v1;
+    if (!o.v1) return null;
+    o.v2 = normForm(e.v2); o.v3 = normForm(e.v3); o.ving = normForm(e.ving);
+    o.type = /^irreg/i.test(String(e.type || '')) ? 'Irregular' : 'Regular'; o.sub = '';
+  } else {
+    o.word = cleanStr(e.word, 40); if (!o.word) return null;
+    o.v1 = o.v2 = o.v3 = o.ving = ''; o.type = '';
+    if (CAT_SUBS[cat] && CAT_SUBS[cat].indexOf(o.sub) === -1) o.sub = canonSub(cat, o.sub) || CAT_SUBS[cat][0];
+    if (!CAT_SUBS[cat]) o.sub = '';
+  }
+  return o;
+}
+function entryKey(e) { return (e.cat === 'Verb' ? e.v1 : e.word).toLowerCase() + '|' + e.cat + '|' + (e.cat === 'Verb' ? '' : (e.sub || '')); }
+function deriveIPA(o) {
+  if (o.cat !== 'Verb' || !o.p1) return;
+  if (o.type !== 'Irregular') {
+    const pp = pastIPA(o.p1);
+    if (!o.p2 && /ed$/.test(o.v2)) o.p2 = pp;
+    if (!o.p3 && /ed$/.test(o.v3)) o.p3 = pp;
+  }
+  if (!o.p4 && /ing$/.test(o.ving)) o.p4 = ingIPA(o.p1);
+}
+// Lengkapi bentuk verb yang kosong. Mengembalikan daftar bagian yang diisi otomatis.
+function completeVerb(o) {
+  const notes = [];
+  const k = VERBS.find(v => v.v1 === o.v1);
+  const kv2 = k ? k.v2.split('/').map(s => s.trim()).join(' / ') : '';
+  if (k) {
+    if (!o.v2) { o.v2 = kv2; if (!o.p2) o.p2 = k.p2; notes.push('V2'); }
+    if (!o.v3) { o.v3 = k.v3; if (!o.p3) o.p3 = k.p3; notes.push('V3'); }
+    if (!o.ving) { o.ving = k.ving; if (!o.p4) o.p4 = k.p4; notes.push('V-ing'); }
+    if (!o.p1) o.p1 = k.p1;
+    if (o.v2 === kv2 && !o.p2) o.p2 = k.p2;
+    if (o.v3 === k.v3 && !o.p3) o.p3 = k.p3;
+    if (o.ving === k.ving && !o.p4) o.p4 = k.p4;
+    if (!o.meaning) o.meaning = k.meaning;
+  } else {
+    const c = regConj(o.v1);
+    if (!o.v2) { o.v2 = c.v2; notes.push('V2'); }
+    if (!o.v3) { o.v3 = c.v3; notes.push('V3'); }
+    if (!o.ving) { o.ving = c.ving; notes.push('V-ing'); }
+  }
+  deriveIPA(o);
+  return notes;
+}
+let _bIdx = null;
+function buildBuiltin() {
+  const out = [];
+  VERBS.forEach(v => {
+    out.push({ id: uid(), word: v.v1, cat: 'Verb', sub: '', v1: v.v1, v2: v.v2.split('/').map(s => s.trim()).join(' / '), v3: v.v3, ving: v.ving, p1: v.p1, p2: v.p2, p3: v.p3, p4: v.p4, meaning: v.meaning, type: v.type });
+  });
+  let cat = '', sub = '';
+  NONVERB_RAW.trim().split('\n').forEach(l => {
+    l = l.trim(); if (!l) return;
+    if (l.charAt(0) === '@') { const p = l.slice(1).split('|'); cat = p[0]; sub = p[1] || ''; return; }
+    const p = l.split('|');
+    out.push({ id: uid(), word: p[0], cat: cat, sub: sub, v1: '', v2: '', v3: '', ving: '', p1: p[1] || '', p2: '', p3: '', p4: '', meaning: p[2] || '', type: '' });
+  });
+  return out;
+}
+function builtinNonVerbIndex() {
+  if (_bIdx) return _bIdx;
+  _bIdx = {};
+  buildBuiltin().forEach(e => { if (e.cat !== 'Verb') { const k = e.word.toLowerCase(); if (!_bIdx[k]) _bIdx[k] = e; } });
+  return _bIdx;
+}
+
+/* ----- pencarian bilingual ----- */
+function englishForms(e) {
+  const out = [];
+  const add = (t, role) => String(t || '').split('/').forEach(x => { x = x.trim().toLowerCase(); if (x) out.push({ t: x, role: role }); });
+  if (e.cat === 'Verb') { add(e.v1, 'V1'); add(third(e.v1), 'V1 (+s)'); add(e.v2, 'V2'); add(e.v3, 'V3'); add(e.ving, 'V-ing'); }
+  else add(e.word, 'Kata');
+  return out;
+}
+function meaningTokens(e) { return String(e.meaning || '').toLowerCase().split(/[;,\/()]/).map(s => s.trim()).filter(Boolean); }
+function scoreEntry(e, q) {
+  let best = { score: 0, why: '' };
+  const up = (s, w) => { if (s > best.score) best = { score: s, why: w }; };
+  englishForms(e).forEach(f => {
+    if (f.t === q) up(100, f.role);
+    else if (f.t.indexOf(q) === 0) up(70, f.role);
+    else if (q.length >= 2 && f.t.indexOf(q) !== -1) up(40, f.role);
+  });
+  meaningTokens(e).forEach(tk => {
+    if (tk === q) up(95, 'Arti');
+    else if (tk.split(/\s+/).indexOf(q) !== -1) up(80, 'Arti');
+    else if (tk.indexOf(q) === 0) up(62, 'Arti');
+    else if (q.length >= 3 && tk.indexOf(q) !== -1) up(35, 'Arti');
+  });
+  if (best.score === 0 && q.length >= 3 && (e.cat + ' ' + e.sub).toLowerCase().indexOf(q) !== -1) up(15, 'Kategori');
+  return best;
+}
+function passFilter(e, f) {
+  if (f === 'all') return true;
+  const i = f.indexOf(':'); const c = i < 0 ? f : f.slice(0, i), s = i < 0 ? '' : f.slice(i + 1);
+  if (e.cat !== c) return false;
+  if (!s) return true;
+  return c === 'Verb' ? e.type === s : e.sub === s;
+}
+
+/* ----- potongan HTML ----- */
+function formCell(word, ipa) {
+  if (!word) return '<span class="text-slate-600">–</span>';
+  const ws = String(word).split('/').map(s => s.trim()).filter(Boolean);
+  const raw = String(ipa || '');
+  const ps = ws.length > 1 ? raw.split('/').map(s => s.trim()) : [raw.trim()];
+  return ws.map((w, i) => {
+    const p = ps[i] || '';
+    return '<div class="fc"><div class="flex items-center gap-1.5"><span class="fw">' + esc(w) + '</span>' +
+      '<button type="button" class="audio" data-say="' + esc(w) + '" aria-label="Putar audio: ' + esc(w) + '" title="Putar: ' + esc(w) + '">🔊</button></div>' +
+      '<div class="ipa">' + (p ? '[' + esc(p) + ']' : '<span class="ipa-na">IPA belum ada</span>') + '</div></div>';
+  }).join('');
+}
+function tagsHTML(e) {
+  let h = '<div class="flex flex-wrap gap-1.5"><span class="chip ' + (CAT_STYLE[e.cat] || '') + '">' + esc(e.cat) + '</span>';
+  if (e.cat === 'Verb') h += '<span class="chip ' + (e.type === 'Irregular' ? 'chip-am' : 'chip-em') + '">' + esc(e.type) + ' Verb</span>';
+  else if (e.sub) h += '<span class="chip">' + esc(e.sub) + '</span>';
+  return h + '</div>';
+}
+function actionsHTML(e) {
+  return '<div class="flex gap-1.5 mt-2"><button type="button" class="btn btn-gh btn-sm" data-edit="' + esc(e.id) + '">✏️ Edit</button><button type="button" class="btn btn-rd btn-sm" data-del="' + esc(e.id) + '">🗑 Hapus</button></div>';
+}
+function whyChip(why, q) { return q && why ? ' <span class="chip chip-vi" style="font-size:.65rem;padding:.05rem .5rem">cocok: ' + esc(why) + '</span>' : ''; }
+
+/* ----- parsing import ----- */
+const HDR = {
+  word: ['word', 'kata', 'kosakata', 'v1', 'base', 'kata dasar', 'kata_dasar', 'english', 'inggris', 'en', 'lemma'],
+  meaning: ['meaning', 'arti', 'translation', 'terjemahan', 'indonesian', 'indonesia', 'id', 'definition'],
+  cat: ['category', 'cat', 'kategori', 'pos', 'part of speech', 'jenis', 'class'],
+  sub: ['sub', 'subcategory', 'subkategori', 'sub_category', 'subtype', 'subcat', 'sub kategori'],
+  v2: ['v2', 'past', 'simple past', 'past simple', 'bentuk 2'],
+  v3: ['v3', 'past participle', 'pp', 'participle', 'bentuk 3'],
+  ving: ['ving', 'v-ing', 'v_ing', 'ing', 'present participle', 'bentuk ing', 'gerund'],
+  ipa: ['ipa', 'phonetic', 'pronunciation', 'cara baca', 'bacaan', 'ipa1', 'p1', 'ipa_v1'],
+  ipa2: ['ipa2', 'ipa_v2', 'p2', 'phonetic2'],
+  ipa3: ['ipa3', 'ipa_v3', 'p3', 'phonetic3'],
+  ipa4: ['ipa4', 'ipa_ving', 'ipa_v-ing', 'p4', 'phonetic4'],
+  type: ['type', 'status', 'tipe', 'regular/irregular', 'verb type', 'verb_type']
+};
+const HDR_ALL = {}; Object.keys(HDR).forEach(k => HDR[k].forEach(n => { HDR_ALL[n] = true; }));
+
+function parseCSV(text) {
+  text = String(text || '').replace(/^﻿/, '');
+  const first = text.split(/\r?\n/, 1)[0] || '';
+  const delim = [',', ';', '\t'].map(d => [d, first.split(d).length]).sort((a, b) => b[1] - a[1])[0][0];
+  const rows = []; let row = [], cur = '', q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text.charAt(i);
+    if (q) { if (c === '"') { if (text.charAt(i + 1) === '"') { cur += '"'; i++; } else q = false; } else cur += c; }
+    else if (c === '"') q = true;
+    else if (c === delim) { row.push(cur); cur = ''; }
+    else if (c === '\n' || c === '\r') { if (c === '\r' && text.charAt(i + 1) === '\n') i++; row.push(cur); cur = ''; rows.push(row); row = []; }
+    else cur += c;
+  }
+  if (cur !== '' || row.length) { row.push(cur); rows.push(row); }
+  return rows.filter(r => r.some(x => String(x).trim() !== ''));
+}
+// Mengembalikan { rows: [objek mentah], lineBase: nomor baris pertama } atau melempar Error
+function parseImportText(text) {
+  const t = String(text || '').replace(/^﻿/, '').trim();
+  if (!t) throw new Error('File / teks kosong.');
+  if (t.charAt(0) === '[' || t.charAt(0) === '{') {
+    let data;
+    try { data = JSON.parse(t); } catch (e) { throw new Error('JSON tidak valid: ' + (e && e.message ? e.message : 'format salah')); }
+    if (!Array.isArray(data) && data && typeof data === 'object') {
+      const key = ['words', 'data', 'items', 'entries', 'vocab', 'vocabulary', 'dictionary', 'kosakata'].find(k => Array.isArray(data[k]));
+      if (!key) throw new Error('Format JSON tidak dikenali. Gunakan array objek, mis. [{"word":"drink","meaning":"minum"}].');
+      data = data[key];
     }
-    const sg = this.suggest(w);
-    out.innerHTML = '<div class="fade p-4 rounded-2xl" style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3)">' +
-      '<div class="font-bold text-amber-200">Kata "' + esc(w) + '" tidak ditemukan di kamus bawaan.</div>' +
-      (sg.length ? '<div class="mt-2 text-sm text-slate-200">💡 Mungkin yang Anda maksud: ' + sg.map(s => '<button class="chip chip-vi chip-btn" data-sg="' + esc(s) + '">' + esc(s) + '</button>').join(' ') + '</div>' : '') +
-      '<div class="flex flex-wrap gap-2 mt-3"><button class="btn btn-vi btn-sm" data-online="' + esc(w) + '">🌐 Cari online (gratis)</button><button class="btn btn-gh btn-sm" data-manual="' + esc(w) + '">✍️ Tambah manual</button></div>' +
-      '<div id="v-online" class="mt-3"></div></div>';
+    if (!Array.isArray(data)) throw new Error('Format JSON tidak dikenali.');
+    return { rows: data.map(x => (typeof x === 'string' ? { word: x } : x)), lineBase: 1 };
+  }
+  const grid = parseCSV(t);
+  if (!grid.length) throw new Error('Tidak ada baris data.');
+  const head = grid[0].map(c => String(c).toLowerCase().trim());
+  const hasHeader = head.some(c => HDR_ALL[c]);
+  if (hasHeader) {
+    const rows = grid.slice(1).map(r => { const o = {}; head.forEach((h, i) => { if (h) o[h] = r[i] === undefined ? '' : r[i]; }); return o; });
+    return { rows: rows, lineBase: 2 };
+  }
+  return { rows: grid.map(r => ({ word: r[0], meaning: r[1], cat: r[2] })), lineBase: 1 };
+}
+function processRow(raw) {
+  if (!raw || typeof raw !== 'object') return { err: 'baris bukan objek yang valid' };
+  const lk = {}; Object.keys(raw).forEach(k => { lk[String(k).toLowerCase().trim()] = raw[k]; });
+  const pick = names => { for (let i = 0; i < names.length; i++) { const v = lk[names[i]]; if (v !== undefined && v !== null && String(v).trim() !== '') return String(v).trim(); } return ''; };
+  const notes = [];
+  const word = cleanStr(pick(HDR.word), 40);
+  if (!word) return { err: 'kolom kata kosong' };
+  if (!WORD_RE.test(word)) return { err: 'kata tidak valid: "' + word + '"' };
+  let catRaw = pick(HDR.cat); const typeRaw = pick(HDR.type); let status = '';
+  if (/^(regular|irregular)/i.test(typeRaw)) status = /^irreg/i.test(typeRaw) ? 'Irregular' : 'Regular';
+  else if (!catRaw && typeRaw) catRaw = typeRaw;
+  let cat = canonCat(catRaw);
+  if (catRaw && !cat) return { err: 'kategori tidak dikenali: "' + catRaw + '"' };
+  const v2r = pick(HDR.v2), v3r = pick(HDR.v3), vingr = pick(HDR.ving);
+  const bl = word.toLowerCase();
+  if (!cat) {
+    if (v2r || v3r || vingr || status) cat = 'Verb';
+    else if (VERBS.some(v => v.v1 === bl)) cat = 'Verb';
+    else { const nb = builtinNonVerbIndex()[bl]; cat = nb ? nb.cat : 'Noun'; notes.push('kategori diasumsikan ' + cat); }
+  }
+  let sub = canonSub(cat, pick(HDR.sub));
+  if (CAT_SUBS[cat] && !sub) {
+    const nb = builtinNonVerbIndex()[bl];
+    sub = (nb && nb.cat === cat && nb.sub) ? nb.sub : CAT_SUBS[cat][0];
+    notes.push('sub-kategori diisi otomatis: ' + sub);
+  }
+  const o = { id: uid(), cat: cat, sub: sub, word: word, meaning: cleanStr(pick(HDR.meaning), 160), p1: normIPA(pick(HDR.ipa)), p2: normIPA(pick(HDR.ipa2)), p3: normIPA(pick(HDR.ipa3)), p4: normIPA(pick(HDR.ipa4)), v1: '', v2: '', v3: '', ving: '', type: '' };
+  if (cat === 'Verb') {
+    o.v1 = bl; o.word = bl; o.sub = '';
+    o.v2 = normForm(v2r); o.v3 = normForm(v3r); o.ving = normForm(vingr);
+    if ([o.v2, o.v3, o.ving].some(f => f && !FORM_RE.test(f))) return { err: 'bentuk V2/V3/V-ing tidak valid' };
+    const k = VERBS.find(v => v.v1 === o.v1);
+    o.type = status || (k ? k.type : '');
+    const done = completeVerb(o);
+    if (done.length) notes.push('dilengkapi otomatis: ' + done.join(', '));
+    if (!o.type) o.type = (/ed$/.test(o.v2) && o.v2 === o.v3) ? 'Regular' : 'Irregular';
+  } else {
+    const nb = builtinNonVerbIndex()[bl];
+    if (nb && nb.cat === cat) { if (!o.p1) o.p1 = nb.p1; if (!o.meaning) o.meaning = nb.meaning; }
+  }
+  if (!o.meaning) return { err: 'arti (meaning) kosong dan kata tidak ada di kamus bawaan' };
+  const e = normEntry(o);
+  if (!e) return { err: 'data tidak dapat diproses' };
+  return { entry: e, notes: notes };
+}
+function csvCell(v) { const s = String(v == null ? '' : v); return /[",;\n\r\t]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+function downloadText(name, text, mime) {
+  try {
+    const b = new Blob([text], { type: mime }); const u = URL.createObjectURL(b);
+    const a = document.createElement('a'); a.href = u; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => { try { URL.revokeObjectURL(u); } catch (e) {} }, 1500);
+  } catch (e) { toast('Gagal mengunduh file di browser ini', 'err'); }
+}
+
+function filterOptionsHTML() {
+  let h = '<option value="all">📚 All Categories (Semua)</option>';
+  h += '<optgroup label="Verbs"><option value="Verb">Verbs (Regular &amp; Irregular)</option><option value="Verb:Regular">— Regular Verbs</option><option value="Verb:Irregular">— Irregular Verbs</option></optgroup>';
+  CAT_LIST.forEach(c => {
+    if (c[0] === 'Verb') return;
+    const subs = CAT_SUBS[c[0]];
+    if (subs) h += '<optgroup label="' + esc(c[1] + (c[0] === 'Pronoun' ? ' (6 jenis)' : '')) + '"><option value="' + c[0] + '">All ' + esc(c[1]) + '</option>' + subs.map(s => '<option value="' + esc(c[0] + ':' + s) + '">— ' + esc(s) + '</option>').join('') + '</optgroup>';
+    else h += '<option value="' + c[0] + '">' + esc(c[1]) + '</option>';
+  });
+  return h;
+}
+
+const Dict = {
+  items: [], editId: null, filter: 'all', q: '', sort: 'default', shown: PAGE, view: 'table', pending: [],
+  save() {
+    Store.failed = false; Store.set('en1_dict_v2', this.items);
+    if (Store.failed) toast('Penyimpanan browser penuh/diblokir — data hanya sementara', 'err');
   },
+  load() {
+    let it = Store.get('en1_dict_v2', null);
+    if (!Array.isArray(it)) {
+      it = buildBuiltin();
+      const old = Store.get('en1_vault', []);
+      if (Array.isArray(old)) old.forEach(o => {
+        try {
+          if (!o || !o.v1) return;
+          const base = String(o.v1).toLowerCase().trim();
+          const ex = it.find(x => x.cat === 'Verb' && x.v1 === base);
+          const nv2 = normForm(o.v2), nv3 = normForm(o.v3), nving = normForm(o.ving);
+          if (ex) {
+            if (o.meaning) ex.meaning = String(o.meaning);
+            if (nv2 && nv2 !== ex.v2) { ex.v2 = nv2; ex.p2 = ''; }
+            if (nv3 && nv3 !== ex.v3) { ex.v3 = nv3; ex.p3 = ''; }
+            if (nving && nving !== ex.ving) { ex.ving = nving; ex.p4 = ''; }
+            if (o.type) ex.type = /^irreg/i.test(o.type) ? 'Irregular' : 'Regular';
+          } else {
+            const e = normEntry({ id: o.id, cat: 'Verb', word: base, v1: base, v2: nv2, v3: nv3, ving: nving, meaning: o.meaning, type: o.type });
+            if (e) { completeVerb(e); it.unshift(e); }
+          }
+        } catch (err) { /* lewati data lama yang rusak */ }
+      });
+    }
+    const seen = {}; const out = [];
+    it.forEach(x => { const e = normEntry(x); if (e) { const k = entryKey(e); if (!seen[k]) { seen[k] = 1; out.push(e); } } });
+    this.items = out;
+    Store.failed = false; Store.set('en1_dict_v2', this.items);
+  },
+  hasKey(k, exceptId) { return this.items.some(e => e.id !== exceptId && entryKey(e) === k); },
+  addMany(list) {
+    let n = 0;
+    list.slice().reverse().forEach(e => { const k = entryKey(e); if (!this.hasKey(k)) { this.items.unshift(e); n++; } });
+    if (n) this.save();
+    return n;
+  },
+  getList() {
+    let list = this.items.filter(e => passFilter(e, this.filter)).map(e => ({ e: e, score: 0, why: '' }));
+    if (this.q) {
+      list = list.map(x => { const s = scoreEntry(x.e, this.q); return { e: x.e, score: s.score, why: s.why }; }).filter(x => x.score > 0);
+      list.sort((a, b) => b.score - a.score);
+    } else if (this.sort === 'az') {
+      list.sort((a, b) => a.e.word.toLowerCase().localeCompare(b.e.word.toLowerCase()));
+    }
+    return list;
+  },
+  suggest(q) {
+    const maxD = q.length <= 4 ? 1 : 2; const best = new Map();
+    this.items.forEach(e => {
+      englishForms(e).forEach(f => { const d = lev(q, f.t); if (d > 0 && d <= maxD) { const c = best.get(f.t); if (c === undefined || d < c) best.set(f.t, d); } });
+      meaningTokens(e).forEach(t => { if (t.length > 2 && t.split(' ').length <= 2) { const d = lev(q, t); if (d > 0 && d <= Math.min(maxD, 2)) { const c = best.get(t); if (c === undefined || d < c) best.set(t, d); } } });
+    });
+    return Array.from(best.entries()).sort((a, b) => a[1] - b[1] || a[0].length - b[0].length).slice(0, 5).map(x => x[0]);
+  },
+  renderChips() {
+    const counts = {}; this.items.forEach(e => { counts[e.cat] = (counts[e.cat] || 0) + 1; });
+    const cur = this.filter, ci = cur.indexOf(':'); const curCat = cur === 'all' ? 'all' : (ci < 0 ? cur : cur.slice(0, ci));
+    let h = '<button type="button" class="chip chip-btn ' + (cur === 'all' ? 'chip-em' : '') + '" data-f="all">Semua <b>' + this.items.length + '</b></button>';
+    CAT_LIST.forEach(c => { h += '<button type="button" class="chip chip-btn ' + (curCat === c[0] ? 'chip-em' : '') + '" data-f="' + c[0] + '">' + c[1] + ' <b>' + (counts[c[0]] || 0) + '</b></button>'; });
+    setHTML('#d-chips', h);
+    const subs = curCat === 'Verb' ? ['Regular', 'Irregular'] : (CAT_SUBS[curCat] || null);
+    let sh = '';
+    if (subs) {
+      const sel = ci > -1 ? cur.slice(ci + 1) : '';
+      sh = '<button type="button" class="chip chip-btn ' + (!sel ? 'chip-vi' : '') + '" data-f="' + esc(curCat) + '">Semua ' + esc(CAT_PLURAL[curCat] || '') + '</button>' +
+        subs.map(s => '<button type="button" class="chip chip-btn ' + (sel === s ? 'chip-vi' : '') + '" data-f="' + esc(curCat + ':' + s) + '">' + esc(s) + '</button>').join('');
+    }
+    setHTML('#d-subchips', sh);
+    const sel2 = $('#d-filter'); if (sel2 && sel2.value !== cur) sel2.value = cur;
+    $$('[data-dview]').forEach(b => { const on_ = b.dataset.dview === this.view; b.classList.toggle('btn-em', on_); b.classList.toggle('btn-gh', !on_); });
+    const clr = $('#d-qclear'); if (clr) clr.style.display = this.q ? '' : 'none';
+  },
+  tableHTML(slice) {
+    const dash = '<span class="text-slate-600">–</span>';
+    const rows = slice.map(it => {
+      const e = it.e, isV = e.cat === 'Verb';
+      return '<tr><td>' + (isV ? formCell(e.v1, e.p1) : formCell(e.word, e.p1)) + '</td>' +
+        '<td>' + (isV ? formCell(e.v2, e.p2) : dash) + '</td><td>' + (isV ? formCell(e.v3, e.p3) : dash) + '</td><td>' + (isV ? formCell(e.ving, e.p4) : dash) + '</td>' +
+        '<td style="min-width:170px">' + esc(e.meaning) + whyChip(it.why, this.q) + '</td>' +
+        '<td style="min-width:170px">' + tagsHTML(e) + actionsHTML(e) + '</td></tr>';
+    }).join('');
+    return '<div class="overflow-x-auto rounded-2xl border border-white/10" style="max-height:70vh"><table class="tbl" style="min-width:980px"><thead><tr><th>Kata Dasar (V1)</th><th>V2</th><th>V3</th><th>V-ing</th><th>Arti</th><th>Status &amp; Aksi</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+  },
+  cardsHTML(slice) {
+    const tile = (label, w, p) => '<div class="rounded-xl p-2.5" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)"><div class="lbl" style="margin:0 0 .3rem">' + label + '</div>' + formCell(w, p) + '</div>';
+    return '<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">' + slice.map(it => {
+      const e = it.e;
+      const inner = e.cat === 'Verb'
+        ? '<div class="grid grid-cols-2 gap-2 mt-3">' + tile('V1', e.v1, e.p1) + tile('V2', e.v2, e.p2) + tile('V3', e.v3, e.p3) + tile('V-ing', e.ving, e.p4) + '</div>'
+        : '<div class="mt-3">' + tile('Kata dasar', e.word, e.p1) + '</div>';
+      return '<div class="glass p-4 fade" style="border-radius:1.1rem">' + tagsHTML(e) + inner +
+        '<div class="mt-3 text-sm"><span class="text-slate-400">Arti:</span> <b class="text-white">' + esc(e.meaning) + '</b>' + whyChip(it.why, this.q) + '</div>' + actionsHTML(e) + '</div>';
+    }).join('') + '</div>';
+  },
+  emptyHTML() {
+    if (!this.items.length) {
+      return '<div class="p-8 text-center text-slate-400 text-sm">Kamus kosong. <button type="button" class="chip chip-em chip-btn" data-act="reset">↺ Muat kamus bawaan</button> <button type="button" class="chip chip-vi chip-btn" data-act="import">📥 Upload Kosakata</button></div>';
+    }
+    if (this.q) {
+      const sg = this.suggest(this.q);
+      return '<div class="p-5 rounded-2xl fade" style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3)"><div class="font-bold text-amber-200">Tidak ada hasil untuk "' + esc(this.q) + '"' + (this.filter !== 'all' ? ' pada filter ini' : '') + '.</div>' +
+        (sg.length ? '<div class="mt-2 text-sm text-slate-200">💡 Mungkin yang Anda maksud: ' + sg.map(s => '<button type="button" class="chip chip-vi chip-btn" data-sg="' + esc(s) + '">' + esc(s) + '</button>').join(' ') + '</div>' : '') +
+        '<div class="flex flex-wrap gap-2 mt-3">' + (this.filter !== 'all' ? '<button type="button" class="btn btn-gh btn-sm" data-act="allcat">Cari di semua kategori</button>' : '') +
+        '<button type="button" class="btn btn-vi btn-sm" data-online="' + esc(this.q) + '">🌐 Cari online (kata Inggris)</button><button type="button" class="btn btn-gh btn-sm" data-manual="' + esc(this.q) + '">✍️ Tambah manual</button></div><div id="d-online-msg" class="mt-3 text-sm"></div></div>';
+    }
+    return '<div class="p-8 text-center text-slate-400 text-sm">Tidak ada entri pada kategori ini.</div>';
+  },
+  render() {
+    const body = $('#d-body'); if (!body) return;
+    try {
+      this.renderChips();
+      const list = this.getList(); const total = this.items.length;
+      setText('#d-count', 'Menampilkan ' + Math.min(this.shown, list.length) + ' dari ' + list.length + ' entri' + (list.length !== total ? ' (total ' + total + ')' : ''));
+      let hint = 'Tips: ketik <b>went</b> (V2 dari go) atau <b>makan</b> (arti) — pencarian mendukung Inggris &amp; Indonesia.';
+      if (this.q) {
+        const nA = list.filter(x => x.why === 'Arti').length;
+        const lang = !list.length ? '' : (nA === list.length ? 'Indonesia' : (nA === 0 ? 'Inggris' : 'campuran Inggris &amp; Indonesia'));
+        hint = '🔎 "' + esc(this.q) + '" → ' + list.length + ' hasil' + (lang ? ' • terdeteksi: ' + lang : '');
+      }
+      setHTML('#d-hint', hint);
+      if (!list.length) { body.innerHTML = this.emptyHTML(); setHTML('#d-more', ''); return; }
+      const slice = list.slice(0, this.shown);
+      body.innerHTML = this.view === 'cards' ? this.cardsHTML(slice) : this.tableHTML(slice);
+      setHTML('#d-more', list.length > this.shown ? '<button type="button" class="btn btn-gh" data-act="more">⬇ Tampilkan ' + Math.min(PAGE, list.length - this.shown) + ' lagi (sisa ' + (list.length - this.shown) + ')</button>' : '');
+    } catch (err) {
+      body.innerHTML = '<div class="p-6 text-rose-300 text-sm">Gagal menampilkan kamus. Muat ulang halaman.</div>';
+      if (window.console) console.error('[Dict.render]', err);
+    }
+  },
+  setFilter(f) { this.filter = f; this.shown = PAGE; this.render(); },
+  /* ----- modal tambah/edit ----- */
+  syncModal(sub) {
+    const cat = val('#dm-cat'); const subs = CAT_SUBS[cat];
+    const sw = $('#dm-subwrap'); if (sw) sw.style.display = subs ? '' : 'none';
+    if (subs) { setHTML('#dm-sub', subs.map(s => '<option value="' + esc(s) + '">' + esc(s) + '</option>').join('')); const se = $('#dm-sub'); if (se) se.value = subs.indexOf(sub) > -1 ? sub : subs[0]; }
+    const vb = $('#dm-verbbox'); if (vb) vb.style.display = cat === 'Verb' ? '' : 'none';
+    setText('#dm-wordlbl', cat === 'Verb' ? 'Kata kerja dasar (V1)' : 'Kata dasar');
+  },
+  openModal(item, preset) {
+    const d = Object.assign({ cat: 'Verb', sub: '', type: 'Regular' }, preset || {}, item || {});
+    this.editId = item ? item.id : null;
+    setText('#dm-title', item ? 'Edit Kosakata' : 'Tambah Kosakata');
+    const set = (id, v) => { const e = $(id); if (e) e.value = v || ''; };
+    set('#dm-cat', d.cat); this.syncModal(d.sub);
+    set('#dm-word', d.cat === 'Verb' ? (d.v1 || d.word) : d.word); set('#dm-p1', d.p1);
+    set('#dm-v2', d.v2); set('#dm-p2', d.p2); set('#dm-v3', d.v3); set('#dm-p3', d.p3); set('#dm-ving', d.ving); set('#dm-p4', d.p4);
+    set('#dm-mean', d.meaning); set('#dm-type', d.type === 'Irregular' ? 'Irregular' : 'Regular'); setText('#dm-err', '');
+    const m = $('#d-modal'); if (m) m.classList.add('open');
+    const w = $('#dm-word'); if (w) { try { w.focus(); } catch (e) {} }
+  },
+  closeModal() { const m = $('#d-modal'); if (m) m.classList.remove('open'); },
+  gatherModal() {
+    const cat = val('#dm-cat') || 'Verb'; const word = cleanStr(val('#dm-word'), 40);
+    const o = { id: this.editId || uid(), cat: cat, sub: CAT_SUBS[cat] ? val('#dm-sub') : '', word: word, meaning: cleanStr(val('#dm-mean'), 160), p1: normIPA(val('#dm-p1')), p2: '', p3: '', p4: '', v1: '', v2: '', v3: '', ving: '', type: '' };
+    if (cat === 'Verb') {
+      o.v1 = word.toLowerCase(); o.word = o.v1;
+      o.v2 = normForm(val('#dm-v2')); o.v3 = normForm(val('#dm-v3')); o.ving = normForm(val('#dm-ving'));
+      o.p2 = normIPA(val('#dm-p2')); o.p3 = normIPA(val('#dm-p3')); o.p4 = normIPA(val('#dm-p4'));
+      o.type = val('#dm-type') === 'Irregular' ? 'Irregular' : 'Regular';
+    }
+    return o;
+  },
+  autoFill() {
+    const o = this.gatherModal();
+    if (o.cat !== 'Verb') { setText('#dm-err', 'Lengkapi otomatis hanya untuk kategori Verb.'); return; }
+    if (!WORD_RE.test(o.word)) { setText('#dm-err', 'Isi kata kerja dasar (V1) terlebih dahulu.'); return; }
+    const k = VERBS.find(v => v.v1 === o.v1); if (k) o.type = k.type;
+    const done = completeVerb(o);
+    const set = (id, v) => { const e = $(id); if (e) e.value = v || ''; };
+    set('#dm-v2', o.v2); set('#dm-v3', o.v3); set('#dm-ving', o.ving); set('#dm-p1', o.p1); set('#dm-p2', o.p2); set('#dm-p3', o.p3); set('#dm-p4', o.p4);
+    set('#dm-mean', o.meaning); set('#dm-type', o.type);
+    setText('#dm-err', done.length ? '' : 'Semua bentuk sudah terisi.');
+    toast(done.length ? 'Dilengkapi: ' + done.join(', ') : 'Tidak ada yang perlu dilengkapi');
+  },
+  saveModal() {
+    const o = this.gatherModal();
+    if (!o.word || !WORD_RE.test(o.word)) { setText('#dm-err', 'Kata dasar wajib diisi (huruf, spasi, apostrof, atau tanda hubung).'); return; }
+    if (o.cat === 'Verb') {
+      if ([o.v2, o.v3, o.ving].some(f => f && !FORM_RE.test(f))) { setText('#dm-err', 'Bentuk V2/V3/V-ing hanya boleh berisi huruf (gunakan "/" untuk dua varian).'); return; }
+      completeVerb(o);
+    }
+    if (!o.meaning) { setText('#dm-err', 'Arti (Bahasa Indonesia) wajib diisi.'); return; }
+    const e = normEntry(o);
+    if (!e) { setText('#dm-err', 'Data tidak valid.'); return; }
+    if (this.hasKey(entryKey(e), this.editId)) { setText('#dm-err', 'Entri yang sama sudah ada di kamus.'); return; }
+    if (this.editId) { const i = this.items.findIndex(x => x.id === this.editId); if (i > -1) this.items[i] = e; else this.items.unshift(e); }
+    else this.items.unshift(e);
+    this.save(); this.closeModal(); this.render(); toast('Tersimpan ✓');
+  },
+  /* ----- pencarian online (opsional) ----- */
   async online(w) {
-    const box = $('#v-online'); if (!box) return;
-    box.innerHTML = '<div class="text-sm text-slate-300">⏳ Mencari online...</div>';
-    const getJSON = async (url) => {
+    const msg = $('#d-online-msg'); const show = h => { if (msg) msg.innerHTML = h; };
+    w = String(w || '').toLowerCase().replace(/[^a-z'-]/g, '');
+    if (!w) { show('<span class="text-amber-300">Pencarian online hanya untuk satu kata Inggris.</span>'); return; }
+    show('<span class="text-slate-300">⏳ Mencari online...</span>');
+    const getJSON = async url => {
       const ctl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
       const t = setTimeout(() => { if (ctl) ctl.abort(); }, 7000);
       try { const r = await fetch(url, ctl ? { signal: ctl.signal } : undefined); if (!r.ok) throw new Error('HTTP ' + r.status); return await r.json(); }
@@ -744,99 +1429,133 @@ const Vault = {
     };
     try {
       const dict = await getJSON('https://api.dictionaryapi.dev/v2/entries/en/' + encodeURIComponent(w));
-      const isVerb = Array.isArray(dict) && dict.some(en => (en.meanings || []).some(m => m.partOfSpeech === 'verb'));
-      if (!isVerb) { box.innerHTML = '<div class="text-sm text-rose-300">Kata ini ditemukan tetapi bukan kata kerja (verb). Anda tetap bisa menambahkannya manual.</div>'; return; }
+      if (!Array.isArray(dict) || !dict.length) throw new Error('tidak ditemukan');
+      const en = dict[0]; const pos = (en.meanings && en.meanings[0] && en.meanings[0].partOfSpeech) || '';
+      const cat = canonCat(pos) || 'Noun';
+      let phon = en.phonetic || ''; if (!phon && Array.isArray(en.phonetics)) { const ph = en.phonetics.find(p => p && p.text); if (ph) phon = ph.text; }
       let tr = '';
       try { const t = await getJSON('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(w) + '&langpair=en|id'); tr = (t && t.responseData && t.responseData.translatedText) || ''; } catch (e) { tr = ''; }
-      const c = regConj(w);
-      this.draft = { word: w, v1: c.v1, v2: c.v2, v3: c.v3, ving: c.ving, meaning: tr ? String(tr).toLowerCase() : '(isi arti manual)', type: 'Regular' };
-      box.innerHTML = this.card(this.draft, 'draf — dianggap Regular', 0, 'draft') + '<div class="text-xs text-slate-400 mt-2">Jika ternyata kata ini irregular, klik Simpan lalu ubah lewat tombol Edit.</div>';
+      show('');
+      this.openModal(null, { cat: cat, word: w, v1: w, p1: normIPA(phon), meaning: tr ? String(tr).toLowerCase() : '' });
+      if (cat === 'Verb') this.autoFill();
+      toast('Hasil online dimuat — periksa lalu simpan');
     } catch (e) {
-      box.innerHTML = '<div class="text-sm text-rose-300">Tidak bisa terhubung ke layanan online (' + esc(e && e.message ? e.message : 'offline') + '). Gunakan "Tambah manual".</div>';
+      show('<span class="text-rose-300">Tidak bisa mengambil data online (' + esc(e && e.message ? e.message : 'offline') + '). Gunakan "Tambah manual".</span>');
     }
   },
-  addEntry(e) {
-    if (!e || !e.word) return false;
-    if (this.has(e.word)) return false;
-    this.items.unshift(Object.assign({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7) }, e));
-    this.save(); return true;
+  /* ----- import / export ----- */
+  openImport() { const m = $('#imp-modal'); if (m) m.classList.add('open'); this.pending = []; setHTML('#imp-preview', ''); const b = $('#imp-commit'); if (b) b.disabled = true; },
+  closeImport() { const m = $('#imp-modal'); if (m) m.classList.remove('open'); },
+  processText(text) {
+    const box = $('#imp-preview'); const commit = $('#imp-commit'); this.pending = []; if (commit) commit.disabled = true;
+    let parsed;
+    try { parsed = parseImportText(text); } catch (e) { if (box) box.innerHTML = '<div class="p-3 rounded-2xl text-sm" style="background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.35);color:#fecdd3">⚠️ ' + esc(e.message) + '</div>'; return; }
+    if (parsed.rows.length > 5000) { if (box) box.innerHTML = '<div class="text-rose-300 text-sm">Maksimal 5000 baris per impor.</div>'; return; }
+    const seen = {}; this.items.forEach(e => { seen[entryKey(e)] = 1; });
+    const log = []; let ok = 0, dup = 0, bad = 0, auto = 0;
+    parsed.rows.forEach((raw, i) => {
+      const line = parsed.lineBase + i; let r;
+      try { r = processRow(raw); } catch (e) { r = { err: 'kesalahan saat memproses baris' }; }
+      if (r.err) { bad++; log.push({ k: 'err', t: 'Baris ' + line + ': ' + r.err }); return; }
+      const k = entryKey(r.entry);
+      if (seen[k]) { dup++; log.push({ k: 'dup', t: 'Baris ' + line + ': "' + r.entry.word + '" sudah ada — dilewati (data lama tidak ditimpa)' }); return; }
+      seen[k] = 1; ok++; this.pending.push(r.entry);
+      if (r.notes.length) { auto++; log.push({ k: 'note', t: 'Baris ' + line + ': "' + r.entry.word + '" — ' + r.notes.join('; ') }); }
+    });
+    const colors = { err: '#fda4af', dup: '#fcd34d', note: '#a5b4fc' };
+    const lines = log.slice(0, 40).map(l => '<div style="color:' + colors[l.k] + '">• ' + esc(l.t) + '</div>').join('') + (log.length > 40 ? '<div class="text-slate-500">… dan ' + (log.length - 40) + ' catatan lain</div>' : '');
+    if (box) box.innerHTML = '<div class="fade"><div class="flex flex-wrap gap-2 mb-2"><span class="chip chip-em">✅ Valid baru: ' + ok + '</span><span class="chip chip-am">♻️ Duplikat dilewati: ' + dup + '</span><span class="chip chip-rd">⚠️ Tidak valid: ' + bad + '</span><span class="chip chip-vi">⚡ Dilengkapi/diasumsikan: ' + auto + '</span></div>' +
+      (this.pending.length ? '<div class="text-xs text-slate-300 mb-2">Contoh entri baru: ' + this.pending.slice(0, 8).map(e => '<b>' + esc(e.word) + '</b> <span class="text-slate-500">(' + esc(e.cat) + ')</span>').join(', ') + (this.pending.length > 8 ? ' …' : '') + '</div>' : '') +
+      (lines ? '<div class="text-xs rounded-2xl p-3 space-y-1" style="background:rgba(2,6,23,.55);max-height:11rem;overflow:auto">' + lines + '</div>' : '') + '</div>';
+    if (commit) { commit.disabled = !this.pending.length; commit.textContent = this.pending.length ? '✅ Impor ' + this.pending.length + ' entri' : 'Tidak ada entri valid'; }
   },
-  filtered() {
-    const q = val('#v-filter').toLowerCase().trim(), c = val('#v-cat');
-    return this.items.filter(i => (!c || i.type === c) && (!q || [i.word, i.v1, i.v2, i.v3, i.ving, i.meaning].join(' ').toLowerCase().indexOf(q) !== -1));
+  readFile(file) {
+    if (!file) return;
+    if (file.size > 2 * 1024 * 1024) { setHTML('#imp-preview', '<div class="text-rose-300 text-sm">File terlalu besar (maks 2 MB).</div>'); return; }
+    const done = text => { const ta = $('#imp-text'); if (ta) ta.value = String(text).slice(0, 200000); this.processText(text); };
+    try {
+      if (typeof FileReader !== 'undefined') {
+        const fr = new FileReader();
+        fr.onload = () => done(String(fr.result || ''));
+        fr.onerror = () => setHTML('#imp-preview', '<div class="text-rose-300 text-sm">Gagal membaca file.</div>');
+        fr.readAsText(file, 'utf-8');
+      } else if (file.text) file.text().then(done).catch(() => setHTML('#imp-preview', '<div class="text-rose-300 text-sm">Gagal membaca file.</div>'));
+      else setHTML('#imp-preview', '<div class="text-rose-300 text-sm">Browser tidak mendukung pembacaan file. Tempel isinya pada kotak teks.</div>');
+    } catch (e) { setHTML('#imp-preview', '<div class="text-rose-300 text-sm">Gagal membaca file.</div>'); }
   },
-  render() {
-    const list = this.filtered();
-    setText('#v-count', this.items.length + ' kata tersimpan' + (list.length !== this.items.length ? ' • menampilkan ' + list.length : ''));
-    if (!list.length) {
-      setHTML('#v-table', '<div class="p-8 text-center text-slate-400 text-sm">' + (this.items.length ? 'Tidak ada hasil untuk filter ini.' : 'Vault masih kosong. Cari kata di atas lalu simpan, atau tekan “✨ Muat Contoh”.') + '</div>');
-      return;
-    }
-    const rows = list.map(i => '<tr>' +
-      '<td class="font-bold text-white whitespace-nowrap">' + esc(i.word) + '</td>' +
-      '<td><button class="btn btn-gh btn-sm" data-say="' + esc(i.word) + '" title="Putar audio">🔊</button></td>' +
-      '<td class="mono text-emerald-200">' + esc(i.v1) + '</td><td class="mono text-violet-200">' + esc(i.v2) + '</td><td class="mono text-violet-200">' + esc(i.v3) + '</td><td class="mono text-slate-200">' + esc(i.ving) + '</td>' +
-      '<td class="min-w-[10rem]">' + esc(i.meaning) + '</td>' +
-      '<td class="whitespace-nowrap"><span class="chip chip-vi">Verb</span> <span class="chip ' + (i.type === 'Irregular' ? 'chip-am' : 'chip-em') + '">' + esc(i.type) + '</span></td>' +
-      '<td class="whitespace-nowrap"><button class="btn btn-gh btn-sm" data-edit="' + esc(i.id) + '">✏️</button> <button class="btn btn-rd btn-sm" data-del="' + esc(i.id) + '">🗑</button></td></tr>').join('');
-    setHTML('#v-table', '<table class="tbl"><thead><tr><th>Kosakata</th><th>Audio</th><th>V1</th><th>V2</th><th>V3</th><th>V-ing</th><th>Arti</th><th>Kategori & Status</th><th>Aksi</th></tr></thead><tbody>' + rows + '</tbody></table>');
+  commitImport() {
+    if (!this.pending.length) return;
+    const n = this.addMany(this.pending); this.pending = [];
+    this.closeImport(); this.shown = PAGE; this.render();
+    toast(n + ' entri berhasil diimpor ✓');
   },
-  openModal(item, word) {
-    this.editId = item ? item.id : null;
-    setText('#vm-title', item ? 'Edit Kosakata' : 'Tambah Kosakata');
-    const set = (id, v) => { const e = $(id); if (e) e.value = v || ''; };
-    set('#vm-word', item ? item.word : (word || '')); set('#vm-v1', item ? item.v1 : (word || '')); set('#vm-v2', item ? item.v2 : '');
-    set('#vm-v3', item ? item.v3 : ''); set('#vm-ving', item ? item.ving : ''); set('#vm-mean', item ? item.meaning : '');
-    set('#vm-type', item ? item.type : 'Regular'); setText('#vm-err', '');
-    const m = $('#v-modal'); if (m) m.classList.add('open');
+  exportJSON() {
+    const data = this.items.map(e => { const o = {}; Object.keys(e).forEach(k => { if (k !== 'id' && e[k] !== '') o[k] = e[k]; }); return o; });
+    downloadText('englishone-kamus.json', JSON.stringify(data, null, 2), 'application/json');
   },
-  closeModal() { const m = $('#v-modal'); if (m) m.classList.remove('open'); },
-  saveModal() {
-    const g = id => val(id).trim();
-    const e = { word: g('#vm-word').toLowerCase(), v1: g('#vm-v1').toLowerCase(), v2: g('#vm-v2').toLowerCase(), v3: g('#vm-v3').toLowerCase(), ving: g('#vm-ving').toLowerCase(), meaning: g('#vm-mean'), type: val('#vm-type') === 'Irregular' ? 'Irregular' : 'Regular' };
-    if (!e.word || !e.v1) { setText('#vm-err', 'Kosakata dan V1 wajib diisi.'); return; }
-    if (this.editId) {
-      const it = this.items.find(i => i.id === this.editId);
-      if (it) { Object.assign(it, e); this.save(); }
-    } else {
-      if (this.has(e.word)) { setText('#vm-err', 'Kosakata ini sudah ada di Vault.'); return; }
-      this.addEntry(e);
-    }
-    this.closeModal(); this.render(); toast('Tersimpan ✓');
+  exportCSV() {
+    const head = ['word', 'category', 'sub', 'meaning', 'ipa', 'v2', 'v3', 'ving', 'ipa_v2', 'ipa_v3', 'ipa_ving', 'type'];
+    const rows = this.items.map(e => [e.word, e.cat, e.sub, e.meaning, e.p1, e.v2, e.v3, e.ving, e.p2, e.p3, e.p4, e.type].map(csvCell).join(','));
+    downloadText('englishone-kamus.csv', '﻿' + head.join(',') + '\n' + rows.join('\n'), 'text/csv');
   },
   init() {
-    on('#v-form', 'submit', ev => { ev.preventDefault(); this.doSearch(val('#v-input')); });
-    $$('[data-ex]').forEach(b => on(b, 'click', () => { const i = $('#v-input'); if (i) i.value = b.dataset.ex; this.doSearch(b.dataset.ex); }));
-    on('#v-result', 'click', ev => {
+    this.load();
+    const sv = Store.get('en1_dict_view', null);
+    this.view = (sv === 'table' || sv === 'cards') ? sv : ((window.innerWidth || 1200) >= 1024 ? 'table' : 'cards');
+    setHTML('#d-filter', filterOptionsHTML());
+    setHTML('#dm-cat', CAT_LIST.map(c => '<option value="' + c[0] + '">' + c[0] + '</option>').join(''));
+    on('#d-q', 'input', () => { this.q = val('#d-q').toLowerCase().replace(/\s+/g, ' ').trim(); this.shown = PAGE; this.render(); });
+    on('#d-qclear', 'click', () => { const i = $('#d-q'); if (i) { i.value = ''; i.focus(); } this.q = ''; this.shown = PAGE; this.render(); });
+    on('#d-filter', 'change', () => this.setFilter(val('#d-filter') || 'all'));
+    on('#d-sort', 'change', () => { this.sort = val('#d-sort') === 'az' ? 'az' : 'default'; this.render(); });
+    const chipClick = ev => { const t = ev.target.closest ? ev.target.closest('[data-f]') : null; if (t) this.setFilter(t.dataset.f); };
+    on('#d-chips', 'click', chipClick); on('#d-subchips', 'click', chipClick);
+    $$('[data-dview]').forEach(b => on(b, 'click', () => { this.view = b.dataset.dview === 'cards' ? 'cards' : 'table'; Store.set('en1_dict_view', this.view); this.render(); }));
+    on('#d-body', 'click', ev => {
       const t = ev.target.closest ? ev.target.closest('button') : null; if (!t) return;
-      if (t.dataset.say) TTS.speak(t.dataset.say, 0.85);
-      else if (t.dataset.sg) { const i = $('#v-input'); if (i) i.value = t.dataset.sg; this.doSearch(t.dataset.sg); }
-      else if (t.dataset.online) this.online(t.dataset.online);
-      else if (t.dataset.manual) this.openModal(null, t.dataset.manual);
-      else if (t.dataset.save !== undefined) {
-        const e = t.dataset.kind === 'draft' ? this.draft : (this.hits[+t.dataset.save] || {}).e;
-        if (e && this.addEntry(e)) { toast('Disimpan ke Vault ✓'); this.render(); t.disabled = true; t.textContent = '✓ Tersimpan di Vault'; t.className = 'btn btn-gh'; }
-        else toast('Sudah ada di Vault', 'err');
+      if (t.dataset.say !== undefined) { TTS.speak(t.dataset.say, 0.85); return; }
+      if (t.dataset.edit) { const it = this.items.find(e => e.id === t.dataset.edit); if (it) this.openModal(it); return; }
+      if (t.dataset.del) {
+        const it = this.items.find(e => e.id === t.dataset.del);
+        if (it && window.confirm('Hapus "' + it.word + '" dari kamus?')) { this.items = this.items.filter(e => e.id !== t.dataset.del); this.save(); this.render(); toast('Dihapus'); }
+        return;
       }
+      if (t.dataset.sg) { const i = $('#d-q'); if (i) i.value = t.dataset.sg; this.q = t.dataset.sg.toLowerCase(); this.shown = PAGE; this.render(); return; }
+      if (t.dataset.online) { this.online(t.dataset.online); return; }
+      if (t.dataset.manual !== undefined) { const w = t.dataset.manual; this.openModal(null, /^[A-Za-z' -]+$/.test(w) ? { word: w, v1: w } : null); return; }
+      if (t.dataset.act === 'allcat') this.setFilter('all');
+      else if (t.dataset.act === 'reset') this.resetBuiltin();
+      else if (t.dataset.act === 'import') this.openImport();
     });
-    on('#v-table', 'click', ev => {
-      const t = ev.target.closest ? ev.target.closest('button') : null; if (!t) return;
-      if (t.dataset.say) TTS.speak(t.dataset.say, 0.85);
-      else if (t.dataset.edit) { const it = this.items.find(i => i.id === t.dataset.edit); if (it) this.openModal(it); }
-      else if (t.dataset.del) {
-        if (window.confirm('Hapus kosakata ini?')) { this.items = this.items.filter(i => i.id !== t.dataset.del); this.save(); this.render(); }
-      }
-    });
-    on('#v-filter', 'input', () => this.render()); on('#v-cat', 'change', () => this.render());
-    on('#v-add', 'click', () => this.openModal(null, ''));
-    on('#v-seed', 'click', () => {
-      let n = 0; ['borrowed', 'speak', 'went', 'studying', 'written', 'ate', 'played', 'taught', 'drinking', 'bought', 'cleaned', 'known'].forEach(w => { const h = this.lookup(w); if (h.length && this.addEntry(this.entryFrom(h[0], w))) n++; });
-      this.render(); toast(n ? n + ' kata contoh ditambahkan' : 'Contoh sudah ada semua');
-    });
-    on('#v-clear', 'click', () => { if (this.items.length && window.confirm('Hapus SEMUA kosakata di Vault?')) { this.items = []; this.save(); this.render(); } });
-    on('#vm-cancel', 'click', () => this.closeModal()); on('#vm-save', 'click', () => this.saveModal());
-    on('#v-modal', 'click', ev => { if (ev.target && ev.target.id === 'v-modal') this.closeModal(); });
+    on('#d-more', 'click', ev => { const t = ev.target.closest ? ev.target.closest('[data-act="more"]') : null; if (t) { this.shown += PAGE; this.render(); } });
+    on('#d-add', 'click', () => this.openModal(null, null));
+    on('#d-import', 'click', () => this.openImport());
+    on('#d-reset', 'click', () => this.resetBuiltin());
+    on('#d-clear', 'click', () => { if (this.items.length && window.confirm('Hapus SEMUA entri kamus? (Anda bisa memuat ulang kamus bawaan lewat tombol Reset Bawaan)')) { this.items = []; this.save(); this.render(); } });
+    on('#dm-cat', 'change', () => this.syncModal(''));
+    on('#dm-auto', 'click', () => this.autoFill());
+    on('#dm-cancel', 'click', () => this.closeModal());
+    on('#dm-save', 'click', () => this.saveModal());
+    on('#d-modal', 'click', ev => { if (ev.target && ev.target.id === 'd-modal') this.closeModal(); });
+    on('#imp-file', 'change', ev => { const f = ev.target && ev.target.files ? ev.target.files[0] : null; this.readFile(f); try { ev.target.value = ''; } catch (e) {} });
+    on('#imp-parse', 'click', () => this.processText(val('#imp-text')));
+    on('#imp-commit', 'click', () => this.commitImport());
+    on('#imp-cancel', 'click', () => this.closeImport());
+    on('#imp-modal', 'click', ev => { if (ev.target && ev.target.id === 'imp-modal') this.closeImport(); });
+    on('#imp-tpl-csv', 'click', () => downloadText('template-kosakata.csv', 'word,category,sub,meaning,ipa,v2,v3,ving,type\ndrink,Verb,,minum,drɪŋk,drank,drunk,drinking,Irregular\nborrow,Verb,,meminjam,ˈbɑroʊ,,,,\nquickly,Adverb,Manner,dengan cepat,ˈkwɪkli,,,,\nbecause,Conjunction,Subordinating,karena,bɪˈkɔz,,,,\nthem,Pronoun,Object Pronoun,mereka (objek),ðɛm,,,,\n', 'text/csv'));
+    on('#imp-tpl-json', 'click', () => downloadText('template-kosakata.json', JSON.stringify([
+      { word: 'drink', category: 'Verb', meaning: 'minum', ipa: 'drɪŋk', v2: 'drank', v3: 'drunk', ving: 'drinking', type: 'Irregular' },
+      { word: 'borrow', category: 'Verb', meaning: 'meminjam' },
+      { word: 'quickly', category: 'Adverb', sub: 'Manner', meaning: 'dengan cepat', ipa: 'ˈkwɪkli' },
+      { word: 'oops', category: 'Interjection', meaning: 'aduh!' }
+    ], null, 2), 'application/json'));
+    on('#imp-exp-json', 'click', () => this.exportJSON());
+    on('#imp-exp-csv', 'click', () => this.exportCSV());
     this.render();
+  },
+  resetBuiltin() {
+    const n = this.addMany(buildBuiltin());
+    this.render(); toast(n ? n + ' entri bawaan dikembalikan' : 'Semua entri bawaan sudah ada');
   }
 };
 
@@ -1316,7 +2035,7 @@ function boot() {
   safe('nav', () => {
     $$('[data-tab]').forEach(b => on(b, 'click', () => showTab(b.dataset.tab)));
   });
-  safe('vault', () => Vault.init());
+  safe('vault', () => Dict.init());
   safe('speaking', () => Speaking.init());
   safe('classifier', () => Classifier.init());
   safe('lessons', () => Lessons.init());
@@ -1334,5 +2053,3 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
 </script>
 </body>
 </html>
-
-</body></html>
